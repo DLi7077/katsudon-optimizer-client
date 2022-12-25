@@ -1,6 +1,6 @@
 import React from "react";
 import useOptimizeControl from "../../Hooks/useOptimizeControl";
-import CharacterSection from "./CharacterSection";
+import Character from "./Character";
 import Header from "./Header";
 import "./styles.css";
 
@@ -26,7 +26,10 @@ export default function Optimizer() {
     <div className="optimize-page">
       <Header />
       <div className="optimize-section character-part">
-        <CharacterSection />
+        <Character
+          characterStats={characterStats}
+          updateCharacterStats={updateCharacterStats}
+        />
       </div>
     </div>
   );
