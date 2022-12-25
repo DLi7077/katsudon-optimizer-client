@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
+import { Select, MenuItem, FormControl } from "@mui/material";
 import { map } from "lodash";
 
 const classes = {
@@ -12,16 +12,19 @@ const classes = {
   },
 };
 
-export default function DropdownSelect({ options, value, onChange }) {
+export default function DropdownSelect({ options, value, updateBuff }) {
   return (
     <FormControl
       variant="standard"
-      sx={{ m: 1, minWidth: 120, height: "20px" }}>
+      sx={{ m: 1, width: 150, height: "20px" }}>
       <Select
-        sx={{ color: "white", height: "20px" }}
+        sx={{ color: "white", height: "20px", fontFamily: "Consolas" }}
         displayEmpty
         value={value}
-        onChange={onChange}
+        onChange={(e) => {
+          console.log(e.target.value);
+          updateBuff(e.target.value);
+        }}
         MenuProps={{ MenuListProps: { disablePadding: true } }}>
         <MenuItem style={classes.menuItem}>
           <em>Buffed Stat</em>

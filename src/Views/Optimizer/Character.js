@@ -10,21 +10,18 @@ import { STAT_LABEL } from "../../Constants/labels";
 const classes = {
   header: {
     display: "flex",
-    justifyContent: "space-between",
     alignItems: "center",
     height: "32px",
     paddingInline: "1rem",
     backgroundColor: "#1F2329",
     border: "1px solid white",
+    fontSize: "1.25",
   },
   container: {
     width: "fit-content",
-    backgroundColor: "rgba(0,0,0,0.4)",
     display: "flex",
     justifyContent: "space-around",
     gap: "4rem",
-    padding: "0.5rem",
-    paddingInline: "1rem",
   },
   partitionContainer: {
     display: "flex",
@@ -45,19 +42,22 @@ export default function Character(props) {
     }
 
     return (
-      <span style={classes.header}>
-        <Typography style={{ fontSize: "1.25rem" }}> Character </Typography>
+      <Typography style={classes.header}>
+        Character
         <LabelInput
           label={"Lv."}
-          style={{ width: "70px" }}
+          style={{ width: "55px" }}
           value={props.characterStats["level"]}
           updateStat={(e) => {
-            const updatedValue = parseFloat(e.target.value) ?? 0;
-            props.updateCharacterStats("level", updatedValue);
+            const updatedValue = parseFloat(e.target.value);
+            props.updateCharacterStats(
+              "level",
+              isNaN(updatedValue) ? 0 : updatedValue
+            );
           }}
         />
         <ElementList update={setElement} />
-      </span>
+      </Typography>
     );
   }
 

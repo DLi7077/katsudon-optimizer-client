@@ -5,8 +5,7 @@ import Header from "./Header";
 import "./styles.css";
 import { createRequest, fetchRequest } from "../../Api/optimize";
 import { get } from "lodash";
-import DropdownSelect from "../../Components/DropdownSelect";
-import { BUFFABLE_STATS } from "../../Constants/buffs";
+import BuffCollections from "./BuffCollections";
 
 export default function Optimizer() {
   const {
@@ -100,6 +99,10 @@ export default function Optimizer() {
     waitForResult();
   }, [requestId, result, requestStatus]);
 
+  useEffect(() => {
+    console.log(buffCollections[0].buffs[0]);
+  }, [buffCollections]);
+
   return (
     <div className="optimize-page">
       <Header />
@@ -108,7 +111,14 @@ export default function Optimizer() {
           characterStats={characterStats}
           updateCharacterStats={updateCharacterStats}
         />
-        <DropdownSelect options={BUFFABLE_STATS} />
+        <BuffCollections
+          buffCollections={buffCollections}
+          addBuffCollection={addBuffCollection}
+          removeBuffCollection={removeBuffCollection}
+          addBuffToCollection={addBuffToCollection}
+          removeBuffFromCollection={removeBuffFromCollection}
+          updateBuffFromCollection={updateBuffFromCollection}
+        />
       </div>
       <button
         onClick={() => {
