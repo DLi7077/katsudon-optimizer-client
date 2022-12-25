@@ -1,24 +1,20 @@
 import { TextField } from "@mui/material";
 
 const classes = {
-  statList: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
-
   statSpan: {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: 'center',
+    width: '250px'
   },
 };
 
-export default function LabelInput({ label, value, updateStat }) {
+export default function LabelInput({ style, label, value, updateStat }) {
   return (
-    <span style={classes.statSpan}>
+    <span style={{ ...classes.statSpan, ...style }}>
       <span>{label}</span>
       <TextField
-        style={{ width: "min(100%,60px)" }}
+        style={{ width: "min(100%,80px)" }}
         type="number"
         variant="standard"
         inputProps={{
@@ -32,7 +28,7 @@ export default function LabelInput({ label, value, updateStat }) {
         value={value}
         sx={{
           // underline color
-          "& .MuiInput-underline:before": { borderBottomColor: "white" },
+          "& .MuiInput-underline:before": { borderBottomColor: "rgba(0,0,0,0)" },
           "& .MuiInput-underline:after": { borderBottomColor: "white" },
         }}
         onChange={updateStat}

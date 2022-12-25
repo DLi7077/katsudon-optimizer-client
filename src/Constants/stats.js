@@ -12,10 +12,7 @@ export const ARTIFACT_SUBSTATS = [
 ];
 
 export const DAMAGE_BONUSES = [
-  {
-    label: "Anemo DMG Bonus%",
-    value: "Anemo DMG Bonus%",
-  },
+  { label: "Anemo DMG Bonus%", value: "Anemo DMG Bonus%" },
   {
     label: "Cryo DMG Bonus%",
     value: "Cryo DMG Bonus%",
