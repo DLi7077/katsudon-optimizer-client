@@ -6,6 +6,7 @@ export const CHARACTER_STAT_TEMPLATE = {
   flat_attack: 0,
   base_hp: 0,
   hp_percent: 0,
+  
   flat_hp: 0,
   base_def: 0,
   def_percent: 0,

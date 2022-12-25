@@ -71,11 +71,11 @@ export default function Character(props) {
     "base_def",
     "def_percent",
     "flat_def",
-    "elemental_mastery",
-    "energy_recharge",
   ]);
 
   const rightStats = pick(props.characterStats, [
+    "elemental_mastery",
+    "energy_recharge",
     "crit_rate",
     "crit_damage",
     "damage_bonus_elemental",
