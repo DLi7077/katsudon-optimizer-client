@@ -33,7 +33,7 @@ export default function LabelInput({ style, label, value, updateStat }) {
         sx={{
           // underline color
           "& .MuiInput-underline:before": { borderBottomColor: "rgba(0,0,0,0)" },
-          "& .MuiInput-underline:after": { borderBottomColor: "white" },
+          "& .MuiInput-underline:after": { borderBottom: "1px solid white" },
         }}
         onChange={updateStat}
       />

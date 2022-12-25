@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BONUS_GAIN_TEMPLATE,
   TALENT_SCALING_TEMPLATE,
@@ -14,6 +14,10 @@ export default function useOptimizeControl() {
   const [talentScaling, setTalentScaling] = useState(TALENT_SCALING_TEMPLATE);
   const [bonusStatGains, setBonusStatGains] = useState(BONUS_GAIN_TEMPLATE);
   const [buffCollections, setBuffCollections] = useState(BUFFS);
+
+  useEffect(() => {
+    console.log(characterStats);
+  }, [characterStats]);
 
   function updateCharacterStats(key, value) {
     const updatedStats = { ...characterStats, [key]: value };
