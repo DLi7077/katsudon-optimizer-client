@@ -42,7 +42,6 @@ export const DAMAGE_BONUSES = [
     value: "Physical DMG Bonus%",
   },
 ];
-
 export const FLOWER_MAIN_STATS = [{ label: "HP", value: "Flat HP" }];
 
 export const FEATHER_MAIN_STATS = [{ label: "ATK", value: "Flat Attack" }];
