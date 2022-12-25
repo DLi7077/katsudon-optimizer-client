@@ -1,5 +1,4 @@
 import React from 'react'
-import Character from "../Components/InitialStats/Character";
 
 const classes = {
   background: {

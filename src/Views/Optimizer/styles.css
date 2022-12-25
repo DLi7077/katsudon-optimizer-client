@@ -1,0 +1,16 @@
+.optimize-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.optimize-section {
+  box-sizing: border-box;
+  padding: 3rem;
+  padding-inline: 4rem;
+  width: 100%;
+}
+
+.character-part {
+  background-color: #2c2c2c;
+}

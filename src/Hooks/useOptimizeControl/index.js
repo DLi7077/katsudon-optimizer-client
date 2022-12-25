@@ -4,7 +4,7 @@ import {
   TALENT_SCALING_TEMPLATE,
   CHARACTER_STAT_TEMPLATE,
   BUFFS,
-} from "../Constants/Initial/character";
+} from "../../Constants/Initial/character";
 import createTalentScaling from "./createTalentScaling";
 import createBonusStatGain from "./createBonusStatGain";
 import { createBuff, createBuffCollection } from "./createBuffCollection";
@@ -29,7 +29,7 @@ export default function useOptimizeControl() {
       console.err("index", index, "out of bounds");
       return;
     }
-    const updatedScalings = talentScaling.filter((_, idx) => idx != index);
+    const updatedScalings = talentScaling.filter((_, idx) => idx !== index);
 
     setTalentScaling(updatedScalings);
   }
@@ -51,7 +51,7 @@ export default function useOptimizeControl() {
       console.err("index", index, "out of bounds");
       return;
     }
-    const updatedBonusGains = bonusStatGains.filter((_, idx) => idx != index);
+    const updatedBonusGains = bonusStatGains.filter((_, idx) => idx !== index);
 
     setBonusStatGains(updatedBonusGains);
   }
@@ -66,7 +66,7 @@ export default function useOptimizeControl() {
       console.error("index", index, "out of bounds");
       return;
     }
-    const updatedCollection = buffCollections.filter((_, idx) => idx != index);
+    const updatedCollection = buffCollections.filter((_, idx) => idx !== index);
     setBuffCollections(updatedCollection);
   }
 
@@ -92,7 +92,7 @@ export default function useOptimizeControl() {
 
     const updatedBuffCollections = [...buffCollections];
     const updatedBuffList = updatedBuffCollections[index].buffs.filter(
-      (_, idx) => idx != buffIndex
+      (_, idx) => idx !== buffIndex
     );
 
     updatedBuffCollections[index] = {
@@ -120,6 +120,10 @@ export default function useOptimizeControl() {
   }
 
   return {
+    characterStats,
+    talentScaling,
+    bonusStatGains,
+    buffCollections,
     updateCharacterStats,
     addTalentScaling,
     removeTalentScaling,
