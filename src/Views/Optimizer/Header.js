@@ -7,9 +7,9 @@ const classes = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "2rem",
-    paddingTop: "2rem",
-    paddingBottom: "2rem",
+    gap: "1.5rem",
+    paddingTop: "1.5rem",
+    paddingBottom: "1rem",
   },
   header: {
     fontSize: "2rem",
@@ -17,7 +17,7 @@ const classes = {
   },
   blueLine: {
     height: "2px",
-    width: "max(800px,90%)",
+    width: "90%",
     backgroundColor: "#7EE8FF",
   },
   orange: {

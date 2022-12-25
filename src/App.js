@@ -1,15 +1,12 @@
-import Initial from "./Sections/Initial";
-import Header from "./Sections/Header";
+import CharacterSection from "./Views/Optimizer/CharacterSection";
+import Header from "./Views/Optimizer/Header";
+import Optimizer from "./Views/Optimizer";
 
-const appContainer = {
-  width: 'min(100vw, 1800px)',
-}
 function App() {
   return (
-    <div style={appContainer}>
-      <Header />
-      <Initial />
-    </div>
+    <>
+      <Optimizer />
+    </>
   );
 }
 
