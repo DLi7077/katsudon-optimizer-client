@@ -4,7 +4,7 @@ import {
   TALENT_SCALING_TEMPLATE,
   CHARACTER_STAT_TEMPLATE,
   BUFFS,
-} from "../../Constants/Initial/character";
+} from "../../Constants/character";
 import createTalentScaling from "./createTalentScaling";
 import createBonusStatGain from "./createBonusStatGain";
 import { createBuff, createBuffCollection } from "./createBuffCollection";
