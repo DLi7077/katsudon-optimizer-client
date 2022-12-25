@@ -13,7 +13,6 @@ const classes = {
 };
 
 export default function LabelInput({ style, label, value, updateStat }) {
-  if (!label) return <span style={classes.spaceSpan}></span>;
   return (
     <span style={{ ...classes.statSpan, ...style }}>
       <span>{label}</span>
@@ -21,16 +20,15 @@ export default function LabelInput({ style, label, value, updateStat }) {
         style={{ width: "min(100%,80px)" }}
         type="number"
         variant="standard"
+        value={value}
         inputProps={{
           style: {
             color: "white",
             textAlign: "right",
             fontFamily: "Consolas",
             padding: 0,
-            backgroundColor: "rgba(0,0,0,0.15)",
           },
         }}
-        value={value}
         sx={{
           // underline color
           "& .MuiInput-underline:before": {
