@@ -60,3 +60,15 @@ export const ELEMENT_BORDER = {
   Hydro: "#77ACEB",
   Physical: "#FFFFFF",
 };
+
+export const ELEMENT_BACKGROUND = {
+  Anemo: "#4F9B69",
+  Pyro: "#9B6A4F",
+  Cryo: "#4F9B9B",
+  Dendro: "#639B4F",
+  Electro: "#7C4A85",
+  Geo: "#A68A44",
+  Hydro: "#4F809B",
+  Physical: "#6F6F6F"
+
+}

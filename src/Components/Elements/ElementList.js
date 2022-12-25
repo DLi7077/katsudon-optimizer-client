@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ELEMENTS, ELEMENT_BORDER } from "../../Constants/elements";
 import { get, map } from "lodash";
 import ElementIcon from "./ElementIcon";
@@ -11,9 +11,13 @@ const classes = {
   },
 };
 
-export default function ElementList() {
+export default function ElementList(props) {
   const ELEMENT_LIST = [...ELEMENTS];
-  const [elementIndex, setElementIndex] = useState(-1);
+  const [elementIndex, setElementIndex] = useState(ELEMENT_LIST.length - 1);
+
+  useEffect(() => {
+    props.update(ELEMENT_LIST[elementIndex].value);
+  }, [elementIndex])
 
   return (
     <div style={classes.horizontalList}>

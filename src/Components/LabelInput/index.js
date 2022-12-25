@@ -5,11 +5,15 @@ const classes = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: 'center',
-    width: '250px'
+    width: '250px',
   },
+  spaceSpan: {
+    height: '14px'
+  }
 };
 
 export default function LabelInput({ style, label, value, updateStat }) {
+  if (!label) return <span style={classes.spaceSpan}></span>
   return (
     <span style={{ ...classes.statSpan, ...style }}>
       <span>{label}</span>

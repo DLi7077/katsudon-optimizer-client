@@ -1,7 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import ElementList from "../Elements/ElementList";
 import LabelInput from "../LabelInput";
 import { INITIAL_CHARACTER_STATS } from "../../Constants/Initial/character";
+import { ELEMENT_BACKGROUND } from "../../Constants/elements";
 import { map } from "lodash";
 import BoxContainer from "../BoxContainer";
 
@@ -9,13 +10,23 @@ import useObjectForm from "../../Hooks/useObjectForm";
 import { Typography } from "@mui/material";
 
 const classes = {
+  header: {
+    display: "flex",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '32px',
+    paddingInline: "1rem",
+    backgroundColor: '#1F2329',
+    border: '1px solid white'
+  },
   container: {
     width: 'fit-content',
-    backgroundColor: "rgba(0,0,0,0.3)",
+    backgroundColor: "rgba(0,0,0,0.4)",
     display: "flex",
     justifyContent: "space-around",
     gap: "4rem",
-    paddingInline: '1rem'
+    padding: '0.5rem',
+    paddingInline: '1rem',
   },
   partitionContainer: {
     display: "flex",
@@ -26,15 +37,24 @@ const classes = {
 
 export default function Character() {
   const { leftStats, rightStats } = INITIAL_CHARACTER_STATS;
-  const [characterStats, setCharacterStats] = useObjectForm(
-    map([...leftStats, ...rightStats], (stats) => stats.value)
-  );
+  const [backgroundColor, setBackgroundColor] = useState(ELEMENT_BACKGROUND.Physical)
+  const [characterStats, setCharacterStats] =
+    useObjectForm(
+      map([...leftStats, ...rightStats], (stats) => stats.value), { element: null }
+    );
 
   function Header() {
-    return <Typography> Character </Typography>
+    function updateBackgroundColor(element) {
+      setBackgroundColor(ELEMENT_BACKGROUND[element]);
+    }
+
+    return <span style={classes.header}>
+      <Typography style={{ fontSize: '1.25rem' }}> Character </Typography>
+      <ElementList update={updateBackgroundColor} />
+    </span>
   }
 
-  return <BoxContainer>
+  return <BoxContainer header={Header()} style={{ backgroundColor: backgroundColor }}>
     <div style={classes.container}>
       <div style={classes.partitionContainer}>
         {map(leftStats, (statAttributes, idx) => {
