@@ -1,9 +1,14 @@
-import Character from "./Components/InitialStats/Character";
+import Initial from "./Sections/Initial";
+import Header from "./Sections/Header";
 
+const appContainer = {
+  width: 'min(100vw, 1800px)',
+}
 function App() {
   return (
-    <div className="App">
-      <Character />
+    <div style={appContainer}>
+      <Header />
+      <Initial />
     </div>
   );
 }

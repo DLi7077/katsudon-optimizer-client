@@ -17,7 +17,8 @@ export default function ElementList(props) {
 
   useEffect(() => {
     props.update(ELEMENT_LIST[elementIndex].value);
-  }, [elementIndex])
+    // eslint-disable-next-line
+  }, [elementIndex]);
 
   return (
     <div style={classes.horizontalList}>
