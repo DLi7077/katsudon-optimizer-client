@@ -6,7 +6,7 @@ export const CHARACTER_STAT_TEMPLATE = {
   flat_attack: 0,
   base_hp: 0,
   hp_percent: 0,
-  
+
   flat_hp: 0,
   base_def: 0,
   def_percent: 0,
@@ -38,9 +38,31 @@ export const BONUS_GAIN_TEMPLATE = [
   },
 ];
 
-export const BUFFS = [
+export const BUFF_COLLECTIONS = [
   {
-    bonus_stat: "Flat Attack",
-    bonus_amount: 372,
+    name: "sara",
+    buffs: [
+      {
+        bonus_stat: "flat_attack",
+        bonus_amount: 372,
+      },
+      {
+        bonus_stat: "attack_percent",
+        bonus_amount: 0.4,
+      },
+    ],
+  },
+  {
+    name: "kazuha",
+    buffs: [
+      {
+        bonus_stat: "elemental_mastery",
+        bonus_amount: 200,
+      },
+      {
+        bonus_stat: "attack_percent",
+        bonus_amount: 0.4,
+      },
+    ],
   },
 ];

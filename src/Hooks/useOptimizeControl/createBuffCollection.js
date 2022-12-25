@@ -12,6 +12,7 @@ export function createBuffCollection(name) {
 export function createBuff(buff, value) {
   if (!isBonusStat(buff)) {
     console.error(buff, "is not a bonus stat");
+    return;
   }
 
   return {

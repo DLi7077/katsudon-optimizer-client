@@ -3,7 +3,7 @@ import {
   BONUS_GAIN_TEMPLATE,
   TALENT_SCALING_TEMPLATE,
   CHARACTER_STAT_TEMPLATE,
-  BUFFS,
+  BUFF_COLLECTIONS,
 } from "../../Constants/character";
 import createTalentScaling from "./createTalentScaling";
 import createBonusStatGain from "./createBonusStatGain";
@@ -13,11 +13,7 @@ export default function useOptimizeControl() {
   const [characterStats, setCharacterStats] = useState(CHARACTER_STAT_TEMPLATE);
   const [talentScaling, setTalentScaling] = useState(TALENT_SCALING_TEMPLATE);
   const [bonusStatGains, setBonusStatGains] = useState(BONUS_GAIN_TEMPLATE);
-  const [buffCollections, setBuffCollections] = useState(BUFFS);
-
-  useEffect(() => {
-    console.log(characterStats);
-  }, [characterStats]);
+  const [buffCollections, setBuffCollections] = useState(BUFF_COLLECTIONS);
 
   function updateCharacterStats(key, value) {
     const updatedStats = { ...characterStats, [key]: value };
