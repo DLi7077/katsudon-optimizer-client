@@ -99,21 +99,18 @@ export default function Optimizer() {
   return (
     <div className="optimize-page">
       <Header />
-      <button
-        onClick={() => {
-          // setSent(!sent);
-          // handleToggle();
-          // console.log("clicked");
-          createOptimizeRequest();
-        }}>
-        sdfsf
-      </button>
       <div className="optimize-section character-part">
         <Character
           characterStats={characterStats}
           updateCharacterStats={updateCharacterStats}
         />
       </div>
+      <button
+        onClick={() => {
+          createOptimizeRequest();
+        }}>
+        Optimize
+      </button>
     </div>
   );
 }

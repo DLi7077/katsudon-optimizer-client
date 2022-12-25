@@ -27,6 +27,7 @@ export default function LabelInput({ style, label, value, updateStat }) {
             textAlign: "right",
             fontFamily: "Consolas",
             padding: 0,
+            backgroundColor: "rgba(0,0,0,0.1)",
           },
         }}
         sx={{
