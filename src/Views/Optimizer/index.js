@@ -5,6 +5,8 @@ import Header from "./Header";
 import "./styles.css";
 import { createRequest, fetchRequest } from "../../Api/optimize";
 import { get } from "lodash";
+import DropdownSelect from "../../Components/DropdownSelect";
+import { BUFFABLE_STATS } from "../../Constants/buffs";
 
 export default function Optimizer() {
   const {
@@ -30,6 +32,7 @@ export default function Optimizer() {
 
   const intervalRef = useRef(null);
 
+  // creates the optimize request
   async function createOptimizeRequest() {
     const requestPayload = {
       character: {
@@ -71,7 +74,7 @@ export default function Optimizer() {
         console.error("could not create a request");
       });
   }
-
+  // checks request status every 2 seconds
   async function waitForResult() {
     clearInterval(intervalRef.current);
     if (requestStatus === "complete") return;
@@ -84,6 +87,7 @@ export default function Optimizer() {
     }, 2000);
   }
 
+  // runs on new request
   useEffect(() => {
     console.log(result);
     console.log(requestStatus);
@@ -104,6 +108,7 @@ export default function Optimizer() {
           characterStats={characterStats}
           updateCharacterStats={updateCharacterStats}
         />
+        <DropdownSelect options={BUFFABLE_STATS} />
       </div>
       <button
         onClick={() => {
