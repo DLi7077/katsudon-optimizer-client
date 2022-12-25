@@ -63,7 +63,7 @@ export default function useOptimizeControl() {
 
   function removeBuffCollection(index) {
     if (index < 0 || index >= buffCollections.length) {
-      console.err("index", index, "out of bounds");
+      console.error("index", index, "out of bounds");
       return;
     }
     const updatedCollection = buffCollections.filter((_, idx) => idx != index);
@@ -72,7 +72,7 @@ export default function useOptimizeControl() {
 
   function addBuffToCollection(index, stat, amount) {
     if (index < 0 || index >= buffCollections.length) {
-      console.err("index", index, "out of bounds");
+      console.error("index", index, "out of bounds");
       return;
     }
 
@@ -82,7 +82,7 @@ export default function useOptimizeControl() {
 
   function removeBuffFromCollection(index, buffIndex) {
     if (index < 0 || index >= buffCollections.length) {
-      console.err("index", index, "out of bounds in collection");
+      console.error("index", index, "out of bounds in collection");
       return;
     }
     if (buffIndex < 0 || buffIndex >= buffCollections[index].buffs.length) {
@@ -105,11 +105,11 @@ export default function useOptimizeControl() {
 
   function updateBuffFromCollection(index, buffIndex, stat, amount) {
     if (index < 0 || index >= buffCollections.length) {
-      console.err("index", index, "out of bounds in collection");
+      console.error("index", index, "out of bounds in collection");
       return;
     }
     if (buffIndex < 0 || buffIndex >= buffCollections[index].buffs.length) {
-      console.err("buffIndex", buffIndex, "out of bounds in buff");
+      console.error("buffIndex", buffIndex, "out of bounds in buff");
       return;
     }
 
