@@ -14,9 +14,15 @@ const classes = {
 
 export default function DropdownSelect({ options, value, onChange }) {
   return (
-    <FormControl variant="standard" sx={{ m: 1, width: 150, height: "20px" }}>
+    <FormControl
+      variant="standard"
+      sx={{ m: 1, width: 150, height: "20px", padding: 0, marginInline: 0 }}>
       <Select
-        sx={{ color: "white", height: "20px", fontFamily: "Consolas" }}
+        sx={{
+          color: "white",
+          height: "20px",
+          fontFamily: "Consolas",
+        }}
         displayEmpty
         value={value}
         onChange={onChange}

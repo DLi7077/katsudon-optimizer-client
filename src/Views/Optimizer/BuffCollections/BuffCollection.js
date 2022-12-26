@@ -91,7 +91,7 @@ export default function BuffCollection(props) {
               <CloseButton
                 style={{
                   position: "absolute",
-                  left: "-2%",
+                  left: "-3%",
                   top: "50%",
                   transform: "translate(-50%,-50%)",
                   padding: "2px",
@@ -133,12 +133,6 @@ export default function BuffCollection(props) {
           }}
         />
       </BoxContainer>
-      <CloseButton
-        style={{ position: "absolute", top: 0, right: 0 }}
-        onClick={() => {
-          props.removeCollection(props.collectionIndex);
-        }}
-      />
     </div>
   );
 }

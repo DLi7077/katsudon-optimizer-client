@@ -34,14 +34,8 @@ export default function useOptimizeControl() {
     setTalentScaling(updatedScalings);
   }
 
-  function addBonusStatGains(source, target, offset, percentGain, maxGain) {
-    const createdBonus = createBonusStatGain(
-      source,
-      target,
-      offset,
-      percentGain,
-      maxGain
-    );
+  function addBonusStatGains() {
+    const createdBonus = createBonusStatGain();
 
     setBonusStatGains([...bonusStatGains, createdBonus]);
   }

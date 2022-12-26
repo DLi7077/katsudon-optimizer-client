@@ -1,20 +1,20 @@
 import { TextField } from "@mui/material";
 import React from "react";
 
-export default function TextInput({ value, onChange, style, type, textDir }) {
+export default function NumberInput({ value, onChange, style, textDir }) {
   return (
     <TextField
       style={style}
       variant="standard"
       value={value}
-      type={type ?? "text"}
-      placeholder="Buff Name"
+      type="number"
       inputProps={{
         style: {
           color: "white",
           textAlign: textDir ?? "left",
           padding: 0,
           backgroundColor: "rgba(0,0,0,0.1)",
+          fontFamily: "Consolas",
         },
       }}
       sx={{

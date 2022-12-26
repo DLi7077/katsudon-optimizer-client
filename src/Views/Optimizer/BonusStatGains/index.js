@@ -12,7 +12,7 @@ export default function BonusStatGains(props) {
           <AddButton
             style={{ fontSize: "1.25rem" }}
             onClick={() => {
-              props.addBuffCollection();
+              props.addBonusStatGains();
             }}
           />
         </div>
