@@ -42,7 +42,10 @@ export default function DropdownSelect({
             <MenuItem
               key={option.value}
               value={option.value}
-              style={classes.menuItem}>
+              style={{
+                ...classes.menuItem,
+                ...(value === option.value ? { backgroundColor: "#3a3a3a" } : {}),
+              }}>
               {option.label}
             </MenuItem>
           );

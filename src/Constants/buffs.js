@@ -16,4 +16,5 @@ export const BUFFABLE_STATS = [
   { value: "base_damage_bonus", label: "Base DMG Bonus" },
   { value: "defense_shred", label: "Defense Shred%" },
   { value: "quicken_bonus", label: "Quicken Bonus%" },
+  { value: "defense_reduction", label: "Defense Reduction%" },
 ];
