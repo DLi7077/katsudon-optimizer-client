@@ -19,6 +19,7 @@ export default function Optimizer() {
     addBonusStatGains,
     removeBonusStatGain,
     addBuffCollection,
+    changeBuffCollectionName,
     removeBuffCollection,
     addBuffToCollection,
     removeBuffFromCollection,
@@ -100,7 +101,7 @@ export default function Optimizer() {
   }, [requestId, result, requestStatus]);
 
   useEffect(() => {
-    console.log(buffCollections[0].buffs[0]);
+    if (!!buffCollections[0]) console.log(buffCollections[0].buffs[0]);
   }, [buffCollections]);
 
   return (
@@ -114,6 +115,7 @@ export default function Optimizer() {
         <BuffCollections
           buffCollections={buffCollections}
           addBuffCollection={addBuffCollection}
+          changeBuffCollectionName={changeBuffCollectionName}
           removeBuffCollection={removeBuffCollection}
           addBuffToCollection={addBuffToCollection}
           removeBuffFromCollection={removeBuffFromCollection}
