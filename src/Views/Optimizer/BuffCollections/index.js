@@ -9,15 +9,16 @@ export default function BuffCollections(props) {
     <div className="align-down-center" style={{ gap: "1rem" }}>
       <div className="align-horizontal-center" style={{ gap: "1rem" }}>
         <div className="section-title">
-          Stat Buffs
+          <span style= {{marginRight: "1rem"}}>Stat Buffs</span>
           <AddButton
-            style={{ fontSize: "1.75rem" }}
+            style={{ fontSize: "1.25rem" }}
             onClick={() => {
               props.addBuffCollection();
             }}
           />
         </div>
       </div>
+      
       <div className="collections">
         {map(props.buffCollections, (collection, collectionIndex) => {
           return (

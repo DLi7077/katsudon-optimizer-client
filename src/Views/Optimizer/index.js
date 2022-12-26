@@ -6,6 +6,7 @@ import "./styles.css";
 import { createRequest, fetchRequest } from "../../Api/optimize";
 import { get } from "lodash";
 import BuffCollections from "./BuffCollections";
+import BonuStatGains from "./BonusStatGains";
 
 export default function Optimizer() {
   const {
@@ -18,6 +19,8 @@ export default function Optimizer() {
     removeTalentScaling,
     addBonusStatGains,
     removeBonusStatGain,
+    updateBonusStatGain,
+    changeBonusStatGainName,
     addBuffCollection,
     changeBuffCollectionName,
     removeBuffCollection,
@@ -89,8 +92,8 @@ export default function Optimizer() {
 
   // runs on new request
   useEffect(() => {
-    console.log(result);
-    console.log(requestStatus);
+    // console.log(result);
+    // console.log(requestStatus);
 
     if (!requestId || !requestStatus) {
       clearInterval(intervalRef.current);
@@ -99,10 +102,6 @@ export default function Optimizer() {
     }
     waitForResult();
   }, [requestId, result, requestStatus]);
-
-  useEffect(() => {
-    if (!!buffCollections[0]) console.log(buffCollections[0].buffs[0]);
-  }, [buffCollections]);
 
   return (
     <div className="optimize-page">
@@ -120,6 +119,13 @@ export default function Optimizer() {
           addBuffToCollection={addBuffToCollection}
           removeBuffFromCollection={removeBuffFromCollection}
           updateBuffFromCollection={updateBuffFromCollection}
+        />
+        <BonuStatGains
+          bonusStatGains={bonusStatGains}
+          addBonusStatGains={addBonusStatGains}
+          removeBonusStatGain={removeBonusStatGain}
+          updateBonusStatGain={updateBonusStatGain}
+          changeBonusStatGainName={changeBonusStatGainName}
         />
       </div>
       <button

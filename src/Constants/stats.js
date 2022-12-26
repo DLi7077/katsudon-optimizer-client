@@ -42,6 +42,7 @@ export const DAMAGE_BONUSES = [
     value: "Physical DMG Bonus%",
   },
 ];
+
 export const FLOWER_MAIN_STATS = [{ label: "HP", value: "Flat HP" }];
 
 export const FEATHER_MAIN_STATS = [{ label: "ATK", value: "Flat Attack" }];
@@ -68,4 +69,32 @@ export const CIRCLET_MAIN_STATS = [
   { label: "ATK%", value: "ATK %" },
   { label: "HP%", value: "HP %" },
   { label: "DEF%", value: "DEF %" },
+];
+
+export const FINAL_STATS = [
+  { value: "total_attack", label: "Total Attack" },
+  { value: "total_hp", label: "Total HP" },
+  { value: "total_defense", label: "Total DEF" },
+  { value: "elemental_mastery", label: "Elem. Mastery" },
+  { value: "energy_recharge", label: "Energy Recharge%" },
+  { value: "crit_rate", label: "Crit Rate%" },
+  { value: "crit_damage", label: "Crit Damage%" },
+  // { value: "damage_bonus_anemo", label: "Anemo DMG Bonus%" },
+  // { value: "damage_bonus_cryo", label: "Cryo DMG Bonus%" },
+  // { value: "damage_bonus_dendro", label: "Dendro DMG Bonus%" },
+  // { value: "damage_bonus_electro", label: "Electro DMG Bonus%" },
+  // { value: "damage_bonus_geo", label: "Geo DMG Bonus%" },
+  // { value: "damage_bonus_hydro", label: "Hydro DMG Bonus%" },
+  // { value: "damage_bonus_pyro", label: "Pyro DMG Bonus%" },
+  // { value: "damage_bonus_physical", label: "Physical DMG Bonus%" },
+  // { value: "damage_bonus_all", label: "Other DMG Bonus%" },
+];
+
+export const BONUS_STATS = [
+  ...ARTIFACT_SUBSTATS,
+  ...DAMAGE_BONUSES,
+  {
+    value: "Other DMG Bonus%",
+    label: "Other DMG Bonus%",
+  },
 ];

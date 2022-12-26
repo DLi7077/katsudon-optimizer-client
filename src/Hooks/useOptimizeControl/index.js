@@ -56,6 +56,18 @@ export default function useOptimizeControl() {
     setBonusStatGains(updatedBonusGains);
   }
 
+  function updateBonusStatGain(index, field, value) {
+    const updatedBonusGains = [...bonusStatGains];
+    updatedBonusGains[index][field] = value;
+    setBonusStatGains(updatedBonusGains);
+  }
+
+  function changeBonusStatGainName(index, name) {
+    const updatedBonusGains = [...bonusStatGains];
+    updatedBonusGains[index].name = name;
+    setBonusStatGains(updatedBonusGains);
+  }
+
   function changeBuffCollectionName(index, name) {
     const updatedBuffCollections = [...buffCollections];
     updatedBuffCollections[index].name = name;
@@ -136,6 +148,8 @@ export default function useOptimizeControl() {
     removeTalentScaling,
     addBonusStatGains,
     removeBonusStatGain,
+    updateBonusStatGain,
+    changeBonusStatGainName,
     changeBuffCollectionName,
     addBuffCollection,
     removeBuffCollection,

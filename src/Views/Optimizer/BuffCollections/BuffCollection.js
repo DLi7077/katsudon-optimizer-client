@@ -41,24 +41,24 @@ export default function BuffCollection(props) {
   return (
     <div style={{ position: "relative", width: "fit-content" }}>
       <BoxContainer
+        style={{ backgroundColor: "#606060" }}
         header={
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
               alignItems: "center",
               width: "100%",
             }}>
             <TextInput
               value={get(props.collection, "name")}
+              placeholder="Buff Name"
               onChange={(e) => {
                 const updatedName = e.target.value;
                 props.changeName(props.collectionIndex, updatedName);
               }}
             />
           </div>
-        }
-        style={{ backgroundColor: "#606060" }}>
+        }>
         {map(get(props.collection, "buffs"), (buff, index) => {
           const { bonus_stat, bonus_amount } = buff;
           function updateBuffStat(stat) {
@@ -69,9 +69,10 @@ export default function BuffCollection(props) {
           }
 
           return (
-            <div style={{ position: "relative" }}>
+            <div
+              style={{ position: "relative" }}
+              key={`buff-${props.collectionIndex}-${index}`}>
               <LabelInput
-                key={`buff-${props.collectionIndex}-${index}`}
                 label={
                   <DropdownSelect
                     options={BUFFABLE_STATS}
