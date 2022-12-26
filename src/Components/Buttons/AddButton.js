@@ -8,7 +8,7 @@ const classes = {
   },
 };
 
-export default function AddButton({ onClick }) {
+export default function AddButton({ onClick, style }) {
   return (
     <div
       style={{
@@ -17,7 +17,7 @@ export default function AddButton({ onClick }) {
         alignItems: "center",
       }}>
       <IconButton style={classes.addBuffButton} onClick={onClick}>
-        <AddIcon />
+        <AddIcon style={style} />
       </IconButton>
     </div>
   );

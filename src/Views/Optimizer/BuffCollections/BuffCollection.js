@@ -3,21 +3,12 @@ import DropdownSelect from "../../../Components/DropdownSelect";
 import { BUFFABLE_STATS } from "../../../Constants/buffs";
 import LabelInput from "../../../Components/LabelInput";
 import "./styles.css";
-import { IconButton, Typography } from "@mui/material";
 import BoxContainer from "../../../Components/BoxContainer";
 import { useState } from "react";
-import AddIcon from "@mui/icons-material/Add";
 import NewBuffForm from "./NewBuffForm";
 import CloseButton from "../../../Components/Buttons/CloseButton";
 import AddButton from "../../../Components/Buttons/AddButton";
 import TextInput from "../../../Components/LabelInput/TextInput";
-
-const classes = {
-  addBuffButton: {
-    padding: 0,
-    color: "white",
-  },
-};
 
 function Separator() {
   return (
@@ -33,17 +24,6 @@ function Separator() {
 }
 
 export default function BuffCollection(props) {
-  // function Header() {
-  //   function changeName(name) {
-  //     props.changeName(props.collectionIndex, name);
-  //   }
-  //   return (
-
-  //     // <Typography style={{ fontSize: "1.125rem" }}>
-  //     //   {get(props.collection, "name")}
-  //     // </Typography>
-  //   );
-  // }
   function addBuff(stat, amount) {
     props.addBuff(props.collectionIndex, stat, amount);
   }

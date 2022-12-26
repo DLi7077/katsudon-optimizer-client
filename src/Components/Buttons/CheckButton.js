@@ -4,7 +4,7 @@ import { IconButton } from "@mui/material";
 
 const classes = {
   defaultClose: {
-    fontSize: "1.25rem",
+    fontSize: "1rem",
     color: "#4dd669",
     padding: 0,
   },

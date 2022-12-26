@@ -73,6 +73,7 @@ export default function useOptimizeControl() {
       return;
     }
     const updatedCollection = buffCollections.filter((_, idx) => idx !== index);
+
     setBuffCollections(updatedCollection);
   }
 
