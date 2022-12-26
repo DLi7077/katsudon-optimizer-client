@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   BONUS_GAIN_TEMPLATE,
   TALENT_SCALING_TEMPLATE,
@@ -54,6 +54,12 @@ export default function useOptimizeControl() {
     const updatedBonusGains = bonusStatGains.filter((_, idx) => idx !== index);
 
     setBonusStatGains(updatedBonusGains);
+  }
+
+  function changeBuffCollectionName(index, name) {
+    const updatedBuffCollections = [...buffCollections];
+    updatedBuffCollections[index].name = name;
+    setBuffCollections(updatedBuffCollections);
   }
 
   function addBuffCollection(name) {
@@ -129,6 +135,7 @@ export default function useOptimizeControl() {
     removeTalentScaling,
     addBonusStatGains,
     removeBonusStatGain,
+    changeBuffCollectionName,
     addBuffCollection,
     removeBuffCollection,
     addBuffToCollection,
