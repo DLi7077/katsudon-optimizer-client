@@ -1,21 +1,14 @@
 import { TextField } from "@mui/material";
 import React from "react";
 
-export default function TextInput({
-  value,
-  onChange,
-  style,
-  type,
-  textDir,
-  placeholder,
-}) {
+export default function TextInput({ value, onChange, style, type, textDir }) {
   return (
     <TextField
       style={style}
       variant="standard"
       value={value}
       type={type ?? "text"}
-      placeholder={placeholder}
+      placeholder="Buff Name"
       inputProps={{
         style: {
           color: "white",

@@ -7,9 +7,6 @@ const classes = {
     alignItems: "center",
     width: "250px",
   },
-  spaceSpan: {
-    height: "14px",
-  },
 };
 
 export default function LabelInput({ style, label, value, onChange }) {

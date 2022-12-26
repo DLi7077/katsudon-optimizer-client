@@ -5,6 +5,11 @@ const classes = {
   addBuffButton: {
     padding: 0,
     color: "white",
+    borderRadius: 0,
+    border: "1px solid white",
+  },
+  icon: {
+    fontSize: "1rem",
   },
 };
 
@@ -17,7 +22,7 @@ export default function AddButton({ onClick, style }) {
         alignItems: "center",
       }}>
       <IconButton style={classes.addBuffButton} onClick={onClick}>
-        <AddIcon style={style} />
+        <AddIcon style={{ ...classes.icon, ...style }} />
       </IconButton>
     </div>
   );
