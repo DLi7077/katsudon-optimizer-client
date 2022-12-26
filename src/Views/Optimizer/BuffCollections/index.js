@@ -2,32 +2,25 @@ import { map } from "lodash";
 import React from "react";
 import BuffCollection from "./BuffCollection";
 
+const classes = {
+  collections: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "2rem",
+  },
+};
 export default function BuffCollections(props) {
   return (
-    <div>
+    <div style={classes.collections}>
       {map(props.buffCollections, (collection, collectionIndex) => {
-        function addBuffToCollection(stat, amount) {
-          props.addBuffToCollection(collectionIndex, stat, amount);
-        }
-        function removeBuffFromCollection(buffIndex) {
-          props.removeBuffFromCollection(collectionIndex, buffIndex);
-        }
-        function updateBuff(buffIndex, stat, amount) {
-          props.updateBuffFromCollection(
-            collectionIndex,
-            buffIndex,
-            stat,
-            amount
-          );
-        }
-
         return (
           <BuffCollection
             key={collectionIndex}
+            collectionIndex={collectionIndex}
             collection={collection}
-            addBuff={addBuffToCollection}
-            removeBuff={removeBuffFromCollection}
-            updateBuff={updateBuff}
+            addBuff={props.addBuffToCollection}
+            removeBuff={props.removeBuffFromCollection}
+            updateBuff={props.updateBuffFromCollection}
           />
         );
       })}

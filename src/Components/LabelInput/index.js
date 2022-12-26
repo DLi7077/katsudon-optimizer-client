@@ -12,7 +12,7 @@ const classes = {
   },
 };
 
-export default function LabelInput({ style, label, value, updateStat }) {
+export default function LabelInput({ style, label, value, onChange }) {
   return (
     <span style={{ ...classes.statSpan, ...style }}>
       <span>{label}</span>
@@ -37,7 +37,7 @@ export default function LabelInput({ style, label, value, updateStat }) {
           },
           "& .MuiInput-underline:after": { borderBottom: "1px solid white" },
         }}
-        onChange={updateStat}
+        onChange={onChange}
       />
     </span>
   );
