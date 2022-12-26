@@ -7,10 +7,14 @@ import { FINAL_STATS, BONUS_STATS } from "../../../Constants/stats";
 import BoxContainer from "../../../Components/BoxContainer";
 import NumberInput from "../../../Components/LabelInput/NumberInput";
 import CloseButton from "../../../Components/Buttons/CloseButton";
+import { isPercentageStat } from "../../../Utils/validate";
+import { STAT_LABEL } from "../../../Constants/labels";
 
 const classes = {
-  label: {
-    width: "40%",
+  numberField: {
+    width: "48%",
+    marginTop: "5px",
+    marginBottom: "5px",
   },
 };
 
@@ -27,7 +31,7 @@ export default function BonusStatGain(props) {
     max_gain,
   } = props.bonusGain;
 
-  const numberFieldHeight = 36;
+  const numberFieldHeight = 100;
   return (
     <div style={{ position: "relative", width: "fit-content" }}>
       <BoxContainer
@@ -51,7 +55,7 @@ export default function BonusStatGain(props) {
         }>
         <div className="align-down-center">
           <FormRow>
-            <span style={classes.label}>Source Stat</span>
+            <span>Source Stat</span>
             <DropdownSelect
               options={FINAL_STATS}
               value={source_stat}
@@ -62,7 +66,7 @@ export default function BonusStatGain(props) {
             />
           </FormRow>
           <FormRow>
-            <span style={classes.label}>Target Stat</span>
+            <span>Target Stat</span>
             <DropdownSelect
               options={BONUS_STATS}
               value={target_stat}
@@ -73,11 +77,13 @@ export default function BonusStatGain(props) {
             />
           </FormRow>
           <FormRow>
-            <span style={classes.label}>Source Offset</span>
+            <span>{`Source Offset${
+              isPercentageStat(STAT_LABEL[source_stat]) ? "%" : ""
+            }`}</span>
             <NumberInput
               value={source_offset}
               textDir="right"
-              style={{ width: "30%", height: `${numberFieldHeight}px` }}
+              style={classes.numberField}
               onChange={(e) => {
                 const updatedValue = e.target.value;
                 updateBonusGain(
@@ -88,12 +94,12 @@ export default function BonusStatGain(props) {
             />
           </FormRow>
           <FormRow>
-            <span style={classes.label}>Percent Gain</span>
+            <span>Percent Gain</span>
             <NumberInput
               value={percent_gain}
               type="number"
               textDir="right"
-              style={{ width: "30%", height: `${numberFieldHeight}px` }}
+              style={classes.numberField}
               onChange={(e) => {
                 const updatedValue = e.target.value;
                 updateBonusGain(
@@ -104,12 +110,12 @@ export default function BonusStatGain(props) {
             />
           </FormRow>
           <FormRow>
-            <span style={classes.label}>Maximum Bonus</span>
+            <span>Maximum Bonus</span>
             <NumberInput
               value={max_gain}
               type="number"
               textDir="right"
-              style={{ width: "30%", height: `${numberFieldHeight}px` }}
+              style={classes.numberField}
               onChange={(e) => {
                 const updatedValue = e.target.value;
                 updateBonusGain(

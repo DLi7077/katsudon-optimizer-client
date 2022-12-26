@@ -4,7 +4,7 @@ import React from "react";
 export default function NumberInput({ value, onChange, style, textDir }) {
   return (
     <TextField
-      style={style}
+      style={{ ...{ height: "fit-content" }, ...style }}
       variant="standard"
       value={value}
       type="number"
