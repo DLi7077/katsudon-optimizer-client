@@ -35,6 +35,9 @@ export default function Optimizer() {
   const [result, setResult] = useState(null);
   const [requestStatus, setRequestStatus] = useState(null);
 
+  const [characterBackgroundColor, setCharacterBackgroundColor] =
+    useState(null);
+
   const intervalRef = useRef(null);
 
   // creates the optimize request
@@ -111,6 +114,10 @@ export default function Optimizer() {
         <Character
           characterStats={characterStats}
           updateCharacterStats={updateCharacterStats}
+          characterBackgroundColor={characterBackgroundColor}
+          setCharacterBackgroundColor={(bgc) =>
+            setCharacterBackgroundColor(bgc)
+          }
         />
         <BuffCollections
           buffCollections={buffCollections}
@@ -133,6 +140,7 @@ export default function Optimizer() {
           addTalentScaling={addTalentScaling}
           removeTalentScaling={removeTalentScaling}
           updateTalentScaling={updateTalentScaling}
+          characterBackgroundColor={characterBackgroundColor}
         />
       </div>
       <button

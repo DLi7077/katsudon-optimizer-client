@@ -34,7 +34,7 @@ export default function Character(props) {
 
   function Header() {
     function setElement(element) {
-      setBackgroundColor(ELEMENT_BACKGROUND[element]);
+      props.setCharacterBackgroundColor(ELEMENT_BACKGROUND[element]);
       props.updateCharacterStats("element", element);
     }
 
@@ -91,7 +91,7 @@ export default function Character(props) {
       <span className="section-title">Starting Stats</span>
       <BoxContainer
         header={Header()}
-        style={{ backgroundColor: backgroundColor }}>
+        style={{ backgroundColor: props.characterBackgroundColor }}>
         <div style={classes.container}>
           <div style={classes.partitionContainer}>
             {map(leftStats, (value, stat) => (

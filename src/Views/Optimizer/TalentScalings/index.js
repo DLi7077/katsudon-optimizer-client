@@ -15,7 +15,7 @@ import Separater from "../../../Components/Separater";
 export default function TalentScalings(props) {
   return (
     <BoxContainer
-      style={{ backgroundColor: "#606060" }}
+      style={{ backgroundColor: props.characterBackgroundColor ?? "#606060" }}
       header={
         <Typography style={{ fontSize: "1.125rem" }}>Talent Scaling</Typography>
       }>
