@@ -9,19 +9,7 @@ import NewBuffForm from "./NewBuffForm";
 import CloseButton from "../../../Components/Buttons/CloseButton";
 import AddButton from "../../../Components/Buttons/AddButton";
 import TextInput from "../../../Components/LabelInput/TextInput";
-
-function Separator() {
-  return (
-    <div
-      style={{
-        height: "1px",
-        backgroundColor: "white",
-        marginTop: "0.75rem",
-        marginBottom: "0.5rem",
-      }}
-    />
-  );
-}
+import Separater from "../../../Components/Separater";
 
 export default function BuffCollection(props) {
   function addBuff(stat, amount) {
@@ -91,7 +79,7 @@ export default function BuffCollection(props) {
               <CloseButton
                 style={{
                   position: "absolute",
-                  left: "-3%",
+                  left: "-5%",
                   top: "50%",
                   transform: "translate(-50%,-50%)",
                   padding: "2px",
@@ -103,7 +91,7 @@ export default function BuffCollection(props) {
             </div>
           );
         })}
-        <Separator />
+        <Separater />
         {map(newBuffs, (buff, index) => {
           return (
             <NewBuffForm
@@ -133,6 +121,12 @@ export default function BuffCollection(props) {
           }}
         />
       </BoxContainer>
+      <CloseButton
+        style={{ position: "absolute", top: 0, right: 0 }}
+        onClick={() => {
+          props.removeCollection(props.collectionIndex);
+        }}
+      />
     </div>
   );
 }

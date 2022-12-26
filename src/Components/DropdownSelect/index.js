@@ -12,7 +12,12 @@ const classes = {
   },
 };
 
-export default function DropdownSelect({ options, value, onChange }) {
+export default function DropdownSelect({
+  options,
+  value,
+  onChange,
+  labelItem,
+}) {
   return (
     <FormControl
       variant="standard"
@@ -27,9 +32,11 @@ export default function DropdownSelect({ options, value, onChange }) {
         value={value}
         onChange={onChange}
         MenuProps={{ MenuListProps: { disablePadding: true } }}>
-        <MenuItem style={classes.menuItem}>
-          <em>Buffed Stat</em>
-        </MenuItem>
+        {!!labelItem && (
+          <MenuItem style={classes.menuItem}>
+            <em>{labelItem}</em>
+          </MenuItem>
+        )}
         {map(options, (option) => {
           return (
             <MenuItem
