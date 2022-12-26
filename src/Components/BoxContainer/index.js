@@ -3,6 +3,7 @@ const classes = {
     display: "flex",
     flexDirection: "column",
     width: "fit-content",
+    height:'fit-content'
   },
   header: {
     display: "flex",
