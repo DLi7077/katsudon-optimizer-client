@@ -55,7 +55,6 @@ export default function BuffCollection(props) {
 
   function removeBuffForm(index) {
     const updatedBuffForms = newBuffs.filter((_, idx) => idx !== index);
-    console.log(updatedBuffForms);
     setNewBuffs(updatedBuffForms);
   }
 
