@@ -62,8 +62,8 @@ export default function useOptimizeControl() {
     setBuffCollections(updatedBuffCollections);
   }
 
-  function addBuffCollection(name) {
-    const createdCollection = createBuffCollection(name);
+  function addBuffCollection() {
+    const createdCollection = createBuffCollection("");
     setBuffCollections([...buffCollections, createdCollection]);
   }
 

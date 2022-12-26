@@ -15,7 +15,6 @@ export default function BuffCollections(props) {
   return (
     <div style={classes.collections}>
       {map(props.buffCollections, (collection, collectionIndex) => {
-        console.log(collection);
         return (
           <BuffCollection
             key={collectionIndex}
@@ -29,7 +28,11 @@ export default function BuffCollections(props) {
           />
         );
       })}
-      <AddButton />
+      <AddButton
+        onClick={() => {
+          props.addBuffCollection();
+        }}
+      />
     </div>
   );
 }
