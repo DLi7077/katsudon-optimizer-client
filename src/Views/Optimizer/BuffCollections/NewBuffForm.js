@@ -34,7 +34,7 @@ export default function NewBuffForm({
       <CloseButton
         style={{
           position: "absolute",
-          left: "-2%",
+          left: "-5%",
           top: "50%",
           transform: "translate(-50%,-50%)",
           padding: "2px",
@@ -46,7 +46,7 @@ export default function NewBuffForm({
       <CheckButton
         style={{
           position: "absolute",
-          right: "-16%",
+          right: "-9%",
           top: "50%",
           transform: "translate(0,-50%)",
           padding: "2px",

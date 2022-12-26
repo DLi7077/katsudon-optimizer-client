@@ -11,7 +11,7 @@ import { createBuff, createBuffCollection } from "./createBuffCollection";
 
 export default function useOptimizeControl() {
   const [characterStats, setCharacterStats] = useState(CHARACTER_STAT_TEMPLATE);
-  const [talentScaling, setTalentScaling] = useState(TALENT_SCALING_TEMPLATE);
+  const [talentScalings, setTalentScalings] = useState(TALENT_SCALING_TEMPLATE);
   const [bonusStatGains, setBonusStatGains] = useState(BONUS_GAIN_TEMPLATE);
   const [buffCollections, setBuffCollections] = useState(BUFF_COLLECTIONS);
 
@@ -20,18 +20,35 @@ export default function useOptimizeControl() {
     setCharacterStats(updatedStats);
   }
 
-  function addTalentScaling(stat, percent) {
-    const createdScaling = createTalentScaling(stat, percent);
-    setTalentScaling([...talentScaling, createdScaling]);
+  function addTalentScaling() {
+    const createdScaling = createTalentScaling();
+    setTalentScalings([...talentScalings, createdScaling]);
   }
   function removeTalentScaling(index) {
-    if (index < 0 || index >= talentScaling.length) {
-      console.err("index", index, "out of bounds");
+    if (index < 0 || index >= talentScalings.length) {
+      console.error("index", index, "out of bounds");
       return;
     }
-    const updatedScalings = talentScaling.filter((_, idx) => idx !== index);
+    if (talentScalings.length === 1) {
+      console.error("must have a least one talent scaling");
+      return;
+    }
+    const updatedScalings = talentScalings.filter((_, idx) => idx !== index);
 
-    setTalentScaling(updatedScalings);
+    setTalentScalings(updatedScalings);
+  }
+  function updateTalentScaling(index, stat, percent) {
+    if (index < 0 || index >= talentScalings.length) {
+      console.error("index", index, "out of bounds");
+      return;
+    }
+    const updatedScalings = [...talentScalings];
+    updatedScalings[index] = {
+      talent_stat: stat,
+      talent_percent: percent,
+    };
+
+    setTalentScalings(updatedScalings);
   }
 
   function addBonusStatGains() {
@@ -39,17 +56,15 @@ export default function useOptimizeControl() {
 
     setBonusStatGains([...bonusStatGains, createdBonus]);
   }
-
   function removeBonusStatGain(index) {
     if (index < 0 || index >= bonusStatGains.length) {
-      console.err("index", index, "out of bounds");
+      console.error("index", index, "out of bounds");
       return;
     }
     const updatedBonusGains = bonusStatGains.filter((_, idx) => idx !== index);
 
     setBonusStatGains(updatedBonusGains);
   }
-
   function updateBonusStatGain(index, field, value) {
     const updatedBonusGains = [...bonusStatGains];
     updatedBonusGains[index][field] = value;
@@ -61,7 +76,6 @@ export default function useOptimizeControl() {
     updatedBonusGains[index].name = name;
     setBonusStatGains(updatedBonusGains);
   }
-
   function changeBuffCollectionName(index, name) {
     const updatedBuffCollections = [...buffCollections];
     updatedBuffCollections[index].name = name;
@@ -72,7 +86,6 @@ export default function useOptimizeControl() {
     const createdCollection = createBuffCollection("");
     setBuffCollections([...buffCollections, createdCollection]);
   }
-
   function removeBuffCollection(index) {
     if (index < 0 || index >= buffCollections.length) {
       console.error("index", index, "out of bounds");
@@ -82,7 +95,6 @@ export default function useOptimizeControl() {
 
     setBuffCollections(updatedCollection);
   }
-
   function addBuffToCollection(index, stat, amount) {
     if (index < 0 || index >= buffCollections.length) {
       console.error("index", index, "out of bounds");
@@ -92,14 +104,13 @@ export default function useOptimizeControl() {
     const updatedCollection = [...buffCollections];
     updatedCollection[index].buffs.push(createBuff(stat, amount));
   }
-
   function removeBuffFromCollection(index, buffIndex) {
     if (index < 0 || index >= buffCollections.length) {
       console.error("index", index, "out of bounds in collection");
       return;
     }
     if (buffIndex < 0 || buffIndex >= buffCollections[index].buffs.length) {
-      console.err("buffIndex", buffIndex, "out of bounds in buff");
+      console.error("buffIndex", buffIndex, "out of bounds in buff");
       return;
     }
 
@@ -115,7 +126,6 @@ export default function useOptimizeControl() {
 
     setBuffCollections(updatedBuffCollections);
   }
-
   function updateBuffFromCollection(index, buffIndex, stat, amount) {
     if (index < 0 || index >= buffCollections.length) {
       console.error("index", index, "out of bounds in collection");
@@ -134,12 +144,13 @@ export default function useOptimizeControl() {
 
   return {
     characterStats,
-    talentScaling,
+    talentScalings,
     bonusStatGains,
     buffCollections,
     updateCharacterStats,
     addTalentScaling,
     removeTalentScaling,
+    updateTalentScaling,
     addBonusStatGains,
     removeBonusStatGain,
     updateBonusStatGain,

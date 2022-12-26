@@ -7,16 +7,18 @@ import { createRequest, fetchRequest } from "../../Api/optimize";
 import { get } from "lodash";
 import BuffCollections from "./BuffCollections";
 import BonuStatGains from "./BonusStatGains";
+import TalentScalings from "./TalentScalings";
 
 export default function Optimizer() {
   const {
     characterStats,
-    talentScaling,
+    talentScalings,
     bonusStatGains,
     buffCollections,
     updateCharacterStats,
     addTalentScaling,
     removeTalentScaling,
+    updateTalentScaling,
     addBonusStatGains,
     removeBonusStatGain,
     updateBonusStatGain,
@@ -40,7 +42,7 @@ export default function Optimizer() {
     const requestPayload = {
       character: {
         stats: characterStats,
-        talent_scalings: talentScaling,
+        talent_scalings: talentScalings,
         bonus_stat_gain: bonusStatGains,
       },
       enemy: {
@@ -125,6 +127,12 @@ export default function Optimizer() {
           removeBonusStatGain={removeBonusStatGain}
           updateBonusStatGain={updateBonusStatGain}
           changeBonusStatGainName={changeBonusStatGainName}
+        />
+        <TalentScalings
+          talentScalings={talentScalings}
+          addTalentScaling={addTalentScaling}
+          removeTalentScaling={removeTalentScaling}
+          updateTalentScaling={updateTalentScaling}
         />
       </div>
       <button

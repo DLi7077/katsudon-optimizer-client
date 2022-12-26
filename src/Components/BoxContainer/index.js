@@ -25,7 +25,7 @@ const classes = {
   content: {
     backgroundColor: "rgba(0,0,0,0.4)",
     padding: "0.25rem",
-    paddingInline: "1rem",
+    paddingInline: "1.5rem",
   },
 };
 
