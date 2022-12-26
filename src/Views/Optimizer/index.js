@@ -97,7 +97,6 @@ export default function Optimizer() {
 
     if (!requestId || !requestStatus) {
       clearInterval(intervalRef.current);
-      console.log(result);
       return;
     }
     waitForResult();
