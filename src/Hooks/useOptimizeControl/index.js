@@ -95,14 +95,15 @@ export default function useOptimizeControl() {
 
     setBuffCollections(updatedCollection);
   }
-  function addBuffToCollection(index, stat, amount) {
+  function addBuffToCollection(index) {
     if (index < 0 || index >= buffCollections.length) {
       console.error("index", index, "out of bounds");
       return;
     }
 
     const updatedCollection = [...buffCollections];
-    updatedCollection[index].buffs.push(createBuff(stat, amount));
+    updatedCollection[index].buffs.push(createBuff());
+    setBuffCollections(updatedCollection);
   }
   function removeBuffFromCollection(index, buffIndex) {
     if (index < 0 || index >= buffCollections.length) {
@@ -137,7 +138,10 @@ export default function useOptimizeControl() {
     }
 
     const updatedBuffCollection = [...buffCollections];
-    updatedBuffCollection[index].buffs[buffIndex] = createBuff(stat, amount);
+    updatedBuffCollection[index].buffs[buffIndex] = {
+      bonus_stat: stat,
+      bonus_amount: amount,
+    };
 
     setBuffCollections(updatedBuffCollection);
   }

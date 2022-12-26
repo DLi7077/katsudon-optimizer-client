@@ -12,20 +12,6 @@ import TextInput from "../../../Components/LabelInput/TextInput";
 import Separater from "../../../Components/Separater";
 
 export default function BuffCollection(props) {
-  function addBuff(stat, amount) {
-    props.addBuff(props.collectionIndex, stat, amount);
-  }
-  function removeBuff(index) {
-    props.removeBuff(props.collectionIndex, index);
-  }
-
-  const [newBuffs, setNewBuffs] = useState([]);
-
-  function removeBuffForm(index) {
-    const updatedBuffForms = newBuffs.filter((_, idx) => idx !== index);
-    setNewBuffs(updatedBuffForms);
-  }
-
   return (
     <div style={{ position: "relative", width: "fit-content" }}>
       <BoxContainer
@@ -50,6 +36,8 @@ export default function BuffCollection(props) {
         {map(get(props.collection, "buffs"), (buff, index) => {
           const { bonus_stat, bonus_amount } = buff;
           function updateBuffStat(stat) {
+            console.log(stat);
+            console.log(props.collection.buffs[index]);
             props.updateBuff(props.collectionIndex, index, stat, bonus_amount);
           }
           function updateBuffAmount(amount) {
@@ -85,39 +73,17 @@ export default function BuffCollection(props) {
                   padding: "2px",
                 }}
                 onClick={() => {
-                  removeBuff(index);
+                  props.removeBuff(props.collectionIndex, index);
                 }}
               />
             </div>
           );
         })}
         <Separater />
-        {map(newBuffs, (buff, index) => {
-          return (
-            <NewBuffForm
-              key={`${props.collectionIndex}-${index}-form`}
-              formIndex={index}
-              createBuff={addBuff}
-              buff={buff}
-              onDelete={removeBuffForm}
-              onUpdate={(stat, amount) => {
-                const updatedForm = [...newBuffs];
-                updatedForm[index].bonus_stat = stat;
-                updatedForm[index].bonus_amount = amount;
-                setNewBuffs(updatedForm);
-              }}
-            />
-          );
-        })}
         <AddButton
           onClick={() => {
-            setNewBuffs([
-              ...newBuffs,
-              {
-                bonus_stat: "",
-                bonus_amount: 0,
-              },
-            ]);
+            console.log("add");
+            props.addBuff(props.collectionIndex);
           }}
         />
       </BoxContainer>

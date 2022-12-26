@@ -1,5 +1,3 @@
-import { isBonusStat } from "../../Utils/validate";
-
 export function createBuffCollection(name) {
   const buffCollection = {
     name: name,
@@ -9,14 +7,10 @@ export function createBuffCollection(name) {
   return buffCollection;
 }
 
-export function createBuff(buff, value) {
-  if (!isBonusStat(buff)) {
-    console.error(buff, "is not a bonus stat");
-    return;
-  }
+export function createBuff() {
 
   return {
-    bonus_stat: buff,
-    bonus_amount: value,
+    bonus_stat: '',
+    bonus_amount: 0,
   };
 }
