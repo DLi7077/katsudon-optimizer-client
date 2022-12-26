@@ -12,19 +12,14 @@ const classes = {
   },
 };
 
-export default function DropdownSelect({ options, value, updateBuff }) {
+export default function DropdownSelect({ options, value, onChange }) {
   return (
-    <FormControl
-      variant="standard"
-      sx={{ m: 1, width: 150, height: "20px" }}>
+    <FormControl variant="standard" sx={{ m: 1, width: 150, height: "20px" }}>
       <Select
         sx={{ color: "white", height: "20px", fontFamily: "Consolas" }}
         displayEmpty
         value={value}
-        onChange={(e) => {
-          console.log(e.target.value);
-          updateBuff(e.target.value);
-        }}
+        onChange={onChange}
         MenuProps={{ MenuListProps: { disablePadding: true } }}>
         <MenuItem style={classes.menuItem}>
           <em>Buffed Stat</em>

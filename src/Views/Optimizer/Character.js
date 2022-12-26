@@ -8,20 +8,16 @@ import { Typography } from "@mui/material";
 import { STAT_LABEL } from "../../Constants/labels";
 
 const classes = {
-  header: {
-    display: "flex",
-    alignItems: "center",
-    height: "32px",
-    paddingInline: "1rem",
-    backgroundColor: "#1F2329",
-    border: "1px solid white",
-    fontSize: "1.25",
-  },
   container: {
     width: "fit-content",
     display: "flex",
     justifyContent: "space-around",
     gap: "4rem",
+  },
+  header: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
   },
   partitionContainer: {
     display: "flex",
@@ -42,22 +38,24 @@ export default function Character(props) {
     }
 
     return (
-      <Typography style={classes.header}>
-        Character
-        <LabelInput
-          label={"Lv."}
-          style={{ width: "55px" }}
-          value={props.characterStats["level"]}
-          updateStat={(e) => {
-            const updatedValue = parseFloat(e.target.value);
-            props.updateCharacterStats(
-              "level",
-              isNaN(updatedValue) ? 0 : updatedValue
-            );
-          }}
-        />
+      <div style={{ ...classes.header, justifyContent: "space-between" }}>
+        <span style={{ ...classes.header, gap: "1rem" }}>
+          <Typography style={{ fontSize: "1.125rem" }}>Character</Typography>
+          <LabelInput
+            label={"Lv."}
+            style={{ width: "55px" }}
+            value={props.characterStats["level"]}
+            onChange={(e) => {
+              const updatedValue = parseFloat(e.target.value);
+              props.updateCharacterStats(
+                "level",
+                isNaN(updatedValue) ? 0 : updatedValue
+              );
+            }}
+          />
+        </span>
         <ElementList update={setElement} />
-      </Typography>
+      </div>
     );
   }
 
@@ -99,7 +97,7 @@ export default function Character(props) {
               style={{ borderBottom: "1px solid rgba(255,255,255,0.3)" }}
               label={STAT_LABEL[stat]}
               value={value}
-              updateStat={(e) => {
+              onChange={(e) => {
                 const updatedValue = parseFloat(e.target.value);
                 props.updateCharacterStats(
                   stat,
@@ -116,7 +114,7 @@ export default function Character(props) {
               style={{ borderBottom: "1px solid rgba(255,255,255,0.3)" }}
               label={STAT_LABEL[stat]}
               value={value}
-              updateStat={(e) => {
+              onChange={(e) => {
                 const updatedValue = parseFloat(e.target.value);
                 props.updateCharacterStats(
                   stat,
