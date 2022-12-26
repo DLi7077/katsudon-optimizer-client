@@ -40,4 +40,4 @@ const BONUS_STATS = [
 
 export const isFinalStat = (stat) => FINAL_STATS.includes(stat);
 export const isBonusStat = (stat) => BONUS_STATS.includes(stat);
-export const isPercentageStat = (stat) => stat.slice(-1) === "%";
+export const isPercentageStat = (stat) => !!stat && stat.slice(-1) === "%";
