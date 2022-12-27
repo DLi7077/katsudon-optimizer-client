@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import BoxContainer from "../../../Components/BoxContainer";
 import "../styles.css";
 import FormRow from "../../../Components/LabelInput/FormRow";
@@ -22,10 +22,9 @@ export default function TalentScalings(props) {
         {map(props.talentScalings, (talentScaling, index) => {
           const { talent_stat, talent_percent } = talentScaling;
           return (
-            <>
+            <Fragment key={`talent-scaling-${index}`}>
               <div
                 className="align-down-center"
-                key={`talent-scaling-${index}`}
                 style={{ position: "relative", paddingBottom: "0.5rem" }}>
                 <FormRow>
                   <span>Scaling Stat</span>
@@ -63,7 +62,7 @@ export default function TalentScalings(props) {
                 />
               </div>
               <Separater />
-            </>
+            </Fragment>
           );
         })}
         <AddButton
