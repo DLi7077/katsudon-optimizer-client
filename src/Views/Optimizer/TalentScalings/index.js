@@ -1,6 +1,5 @@
 import React from "react";
 import BoxContainer from "../../../Components/BoxContainer";
-import TextInput from "../../../Components/LabelInput/TextInput";
 import "../styles.css";
 import FormRow from "../../../Components/LabelInput/FormRow";
 import { map } from "lodash";

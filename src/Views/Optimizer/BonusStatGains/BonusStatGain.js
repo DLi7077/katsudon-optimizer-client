@@ -31,7 +31,6 @@ export default function BonusStatGain(props) {
     max_gain,
   } = props.bonusGain;
 
-  const numberFieldHeight = 100;
   return (
     <div style={{ position: "relative", width: "fit-content" }}>
       <BoxContainer

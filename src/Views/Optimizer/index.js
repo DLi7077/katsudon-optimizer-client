@@ -105,6 +105,7 @@ export default function Optimizer() {
       return;
     }
     waitForResult();
+    // eslint-disable-next-line
   }, [requestId, result, requestStatus]);
 
   return (
