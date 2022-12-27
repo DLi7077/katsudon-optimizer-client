@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ElementList from "../../../Components/Elements/ElementList";
 import LabelInput from "../../../Components/LabelInput";
 import { ELEMENT_BACKGROUND } from "../../../Constants/elements";
@@ -28,10 +27,6 @@ const classes = {
 };
 
 export default function Character(props) {
-  const [backgroundColor, setBackgroundColor] = useState(
-    ELEMENT_BACKGROUND.Physical
-  );
-
   function Header() {
     function setElement(element) {
       props.setCharacterBackgroundColor(ELEMENT_BACKGROUND[element]);
