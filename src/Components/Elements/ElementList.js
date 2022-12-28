@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ELEMENTS, ELEMENT_BORDER } from "../../Constants/elements";
+import { DAMAGE_ELEMENTS, ELEMENT_BORDER } from "../../Constants/elements";
 import { get, map } from "lodash";
 import ElementIcon from "./ElementIcon";
 
@@ -12,8 +12,12 @@ const classes = {
 };
 
 export default function ElementList(props) {
-  const ELEMENT_LIST = [...ELEMENTS];
-  const [elementIndex, setElementIndex] = useState(ELEMENT_LIST.length - 1);
+  const ELEMENT_LIST = props.elementList ?? [...DAMAGE_ELEMENTS];
+  const defaultIndex = props.element
+    ? ELEMENT_LIST.findIndex((elementObj) => elementObj.value === props.element)
+    : ELEMENT_LIST.length - 1;
+
+  const [elementIndex, setElementIndex] = useState(defaultIndex);
 
   useEffect(() => {
     props.update(ELEMENT_LIST[elementIndex].value);
@@ -21,7 +25,7 @@ export default function ElementList(props) {
   }, [elementIndex]);
 
   return (
-    <div style={classes.horizontalList}>
+    <div style={{ ...classes.horizontalList, ...props.style }}>
       {map(ELEMENT_LIST, (element, idx) => {
         const isCurrentElement = elementIndex === idx;
         const borderStyle = isCurrentElement

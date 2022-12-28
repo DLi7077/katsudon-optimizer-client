@@ -8,27 +8,35 @@ import { get } from "lodash";
 import BuffCollections from "./BuffCollections";
 import BonuStatGains from "./BonusStatGains";
 import TalentScalings from "./TalentScalings";
+import Enemy from "./Enemy";
 
 export default function Optimizer() {
   const {
+    // character
     characterStats,
-    talentScalings,
-    bonusStatGains,
-    buffCollections,
     updateCharacterStats,
+    // talent scaling
+    talentScalings,
     addTalentScaling,
     removeTalentScaling,
     updateTalentScaling,
+    // bonus stat gains
+    bonusStatGains,
     addBonusStatGains,
     removeBonusStatGain,
     updateBonusStatGain,
     changeBonusStatGainName,
+    // buff gains
+    buffCollections,
     addBuffCollection,
-    changeBuffCollectionName,
     removeBuffCollection,
+    changeBuffCollectionName,
     addBuffToCollection,
     removeBuffFromCollection,
     updateBuffFromCollection,
+    // enemy
+    enemyStats,
+    updateEnemyStat,
   } = useOptimizeControl();
 
   const [requestId, setRequestId] = useState(null);
@@ -112,14 +120,29 @@ export default function Optimizer() {
     <div className="optimize-page">
       <Header />
       <div className="optimize-section character-part">
-        <Character
-          characterStats={characterStats}
-          updateCharacterStats={updateCharacterStats}
-          characterBackgroundColor={characterBackgroundColor}
-          setCharacterBackgroundColor={(bgc) =>
-            setCharacterBackgroundColor(bgc)
-          }
-        />
+        <div
+          className="align-down-center"
+          style={{
+            alignItems: "flex-start",
+            gap: "2rem",
+          }}>
+          <Character
+            characterStats={characterStats}
+            updateCharacterStats={updateCharacterStats}
+            characterBackgroundColor={characterBackgroundColor}
+            setCharacterBackgroundColor={(bgc) =>
+              setCharacterBackgroundColor(bgc)
+            }
+          />
+          <TalentScalings
+            talentScalings={talentScalings}
+            addTalentScaling={addTalentScaling}
+            removeTalentScaling={removeTalentScaling}
+            updateTalentScaling={updateTalentScaling}
+            characterBackgroundColor={characterBackgroundColor}
+          />
+          <Enemy enemyStats={enemyStats} updateEnemyStat={updateEnemyStat} />
+        </div>
         <BuffCollections
           buffCollections={buffCollections}
           addBuffCollection={addBuffCollection}
@@ -135,13 +158,6 @@ export default function Optimizer() {
           removeBonusStatGain={removeBonusStatGain}
           updateBonusStatGain={updateBonusStatGain}
           changeBonusStatGainName={changeBonusStatGainName}
-        />
-        <TalentScalings
-          talentScalings={talentScalings}
-          addTalentScaling={addTalentScaling}
-          removeTalentScaling={removeTalentScaling}
-          updateTalentScaling={updateTalentScaling}
-          characterBackgroundColor={characterBackgroundColor}
         />
       </div>
       <button
