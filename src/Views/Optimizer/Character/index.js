@@ -27,6 +27,7 @@ const classes = {
 
 export default function Character(props) {
   const leftStats = pick(props.characterStats, [
+    "level",
     "base_attack",
     "attack_percent",
     "flat_attack",
@@ -62,63 +63,61 @@ export default function Character(props) {
               <Typography style={{ fontSize: "1.125rem" }}>
                 Character
               </Typography>
-              <LabelInput
-                label={"Lv."}
-                style={{ width: "55px" }}
-                value={props.characterStats["level"]}
-                onChange={(e) => {
-                  const updatedValue = parseFloat(e.target.value);
-                  props.updateCharacterStats(
-                    "level",
-                    isNaN(updatedValue) ? 0 : updatedValue
-                  );
-                }}
-              />
             </span>
-            <ElementList
-              update={(element) => {
-                props.setCharacterBackgroundColor(element);
-                props.updateCharacterStats("element", element);
-              }}
-              element={props.characterStats.element}
-            />
           </div>
         }
         style={{ backgroundColor: props.characterBackgroundColor }}>
-        <div style={classes.container}>
-          <div style={classes.partitionContainer}>
-            {map(leftStats, (value, stat) => (
-              <LabelInput
-                key={`character-starting-${stat}`}
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.3)" }}
-                label={STAT_LABEL[stat]}
-                value={value}
-                onChange={(e) => {
-                  const updatedValue = parseFloat(e.target.value);
-                  props.updateCharacterStats(
-                    stat,
-                    isNaN(updatedValue) ? 0 : updatedValue
-                  );
-                }}
-              />
-            ))}
-          </div>
-          <div style={classes.partitionContainer}>
-            {map(rightStats, (value, stat) => (
-              <LabelInput
-                key={`character-starting-${stat}`}
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.3)" }}
-                label={STAT_LABEL[stat]}
-                value={value}
-                onChange={(e) => {
-                  const updatedValue = parseFloat(e.target.value);
-                  props.updateCharacterStats(
-                    stat,
-                    isNaN(updatedValue) ? 0 : updatedValue
-                  );
-                }}
-              />
-            ))}
+        <div className="align-down-center">
+          <span>Daamge Element:</span>
+
+          <ElementList
+            update={(element) => {
+              props.setCharacterBackgroundColor(element);
+              props.updateCharacterStats("element", element);
+            }}
+            style={{
+              marginTop: "0.25rem",
+              marginBottom: "0.5rem",
+              padding: "0.17rem",
+              backgroundColor: "rgba(0,0,0,0.4)",
+            }}
+            element={props.characterStats.element}
+          />
+          <div style={classes.container}>
+            <div style={classes.partitionContainer}>
+              {map(leftStats, (value, stat) => (
+                <LabelInput
+                  key={`character-starting-${stat}`}
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.3)" }}
+                  label={STAT_LABEL[stat]}
+                  value={value}
+                  onChange={(e) => {
+                    const updatedValue = parseFloat(e.target.value);
+                    props.updateCharacterStats(
+                      stat,
+                      isNaN(updatedValue) ? 0 : updatedValue
+                    );
+                  }}
+                />
+              ))}
+            </div>
+            <div style={classes.partitionContainer}>
+              {map(rightStats, (value, stat) => (
+                <LabelInput
+                  key={`character-starting-${stat}`}
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.3)" }}
+                  label={STAT_LABEL[stat]}
+                  value={value}
+                  onChange={(e) => {
+                    const updatedValue = parseFloat(e.target.value);
+                    props.updateCharacterStats(
+                      stat,
+                      isNaN(updatedValue) ? 0 : updatedValue
+                    );
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </BoxContainer>
