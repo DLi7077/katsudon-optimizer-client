@@ -1,6 +1,5 @@
 import { map } from "lodash";
 import AddButton from "../../../Components/Buttons/AddButton";
-import "../styles.css";
 import BonusStatGain from "./BonusStatGain";
 
 export default function BonusStatGains(props) {

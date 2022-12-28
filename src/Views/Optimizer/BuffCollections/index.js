@@ -7,9 +7,11 @@ import "./styles.css";
 export default function BuffCollections(props) {
   return (
     <div className="align-down-center" style={{ gap: "1rem" }}>
-      <div className="align-horizontal-center" style={{ gap: "1rem" }}>
+      <div
+        className="align-horizontal-center"
+        style={{ gap: "1rem", flexWrap: "wrap" }}>
         <div className="section-title">
-          <span style= {{marginRight: "1rem"}}>Stat Buffs</span>
+          <span style={{ marginRight: "1rem" }}>Stat Buffs</span>
           <AddButton
             style={{ fontSize: "1.25rem" }}
             onClick={() => {
@@ -18,7 +20,7 @@ export default function BuffCollections(props) {
           />
         </div>
       </div>
-      
+
       <div className="collections">
         {map(props.buffCollections, (collection, collectionIndex) => {
           return (

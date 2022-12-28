@@ -12,6 +12,8 @@ const classes = {
     display: "flex",
     justifyContent: "space-around",
     gap: "4rem",
+    rowGap: "2rem",
+    flexWrap: "wrap",
   },
   header: {
     display: "flex",
@@ -74,7 +76,7 @@ export default function Character(props) {
             update={(element) => {
               props.setCharacterBackgroundColor(element);
               props.updateCharacterStats("element", element);
-              props.updateEnemyAffectedElement(element)
+              props.updateEnemyAffectedElement(element);
             }}
             style={{
               marginTop: "0.25rem",

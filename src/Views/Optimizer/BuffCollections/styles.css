@@ -1,7 +1,7 @@
 .collections {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  min-width: 602px;
-
   gap: 2rem;
+  max-height: 900px;
+  overflow: auto;
 }
