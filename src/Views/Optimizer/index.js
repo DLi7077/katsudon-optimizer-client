@@ -10,6 +10,10 @@ import BonuStatGains from "./BonusStatGains";
 import TalentScalings from "./TalentScalings";
 import Enemy from "./Enemy";
 import { ELEMENT_BACKGROUND } from "../../Constants/elements";
+import {
+  addBuffsToCharacter,
+  finalizedCharacterStats,
+} from "../../Utils/Optimize";
 
 export default function Optimizer() {
   const {
@@ -55,45 +59,51 @@ export default function Optimizer() {
 
   // creates the optimize request
   async function createOptimizeRequest() {
-    const requestPayload = {
-      character: {
-        stats: characterStats,
-        talent_scalings: talentScalings,
-        bonus_stat_gain: bonusStatGains,
-      },
-      enemy: {
-        level: 90,
-        affected_element: "Dendro",
-        incoming_damage_element: "Electro",
-        resistance_to_damage_element: -1.2,
-        defense_percent_dropped: 0.3,
-      },
-      stat_preferences: {
-        substats: [
-          "Flat Attack",
-          "ATK %",
-          "Elemental Mastery",
-          "Energy Recharge%",
-          "Crit Damage",
-        ],
-        flower_main_stats: ["Flat HP"],
-        feather_main_stats: ["Flat Attack"],
-        sands_main_stats: ["ATK %", "Energy Recharge%"],
-        goblet_main_stats: ["Electro DMG Bonus%", "ATK %"],
-        circlet_main_stats: ["ATK %", "Crit Damage"],
-      },
-    };
+    const finalizedCharacter = finalizedCharacterStats(
+      characterStats,
+      buffCollections
+    );
+    console.table(finalizedCharacter);
 
-    await createRequest(requestPayload)
-      .then((createdRequest) => {
-        setRequestId(get(createdRequest, "_id"));
-        setResult(null);
-        setRequestStatus(get(createdRequest, "status"));
-        console.log(createdRequest);
-      })
-      .catch(() => {
-        console.error("could not create a request");
-      });
+    // const requestPayload = {
+    //   character: {
+    //     stats: characterStats,
+    //     talent_scalings: talentScalings,
+    //     bonus_stat_gain: bonusStatGains,
+    //   },
+    //   enemy: {
+    //     level: 90,
+    //     affected_element: "Dendro",
+    //     incoming_damage_element: "Electro",
+    //     resistance_to_damage_element: -1.2,
+    //     defense_percent_dropped: 0.3,
+    //   },
+    //   stat_preferences: {
+    //     substats: [
+    //       "Flat Attack",
+    //       "ATK %",
+    //       "Elemental Mastery",
+    //       "Energy Recharge%",
+    //       "Crit Damage",
+    //     ],
+    //     flower_main_stats: ["Flat HP"],
+    //     feather_main_stats: ["Flat Attack"],
+    //     sands_main_stats: ["ATK %", "Energy Recharge%"],
+    //     goblet_main_stats: ["Electro DMG Bonus%", "ATK %"],
+    //     circlet_main_stats: ["ATK %", "Crit Damage"],
+    //   },
+    // };
+
+    // await createRequest(requestPayload)
+    //   .then((createdRequest) => {
+    //     setRequestId(get(createdRequest, "_id"));
+    //     setResult(null);
+    //     setRequestStatus(get(createdRequest, "status"));
+    //     console.log(createdRequest);
+    //   })
+    //   .catch(() => {
+    //     console.error("could not create a request");
+    //   });
   }
   // checks request status every 2 seconds
   async function waitForResult() {
@@ -112,9 +122,9 @@ export default function Optimizer() {
   //   console.table(enemyStats);
   // }, [enemyStats]);
 
-  // useEffect(() => {
-  //   console.table(characterStats);
-  // }, [characterStats]);
+  useEffect(() => {
+    console.table(characterStats);
+  }, [characterStats]);
 
   // useEffect(() => {
   //   bonusStatGains.forEach((b) => {
@@ -125,11 +135,11 @@ export default function Optimizer() {
   //   console.table(talentScalings);
   // }, [talentScalings]);
 
-  // useEffect(() => {
-  //   buffCollections.forEach((b) => {
-  //     console.table(b.buffs);
-  //   });
-  // }, [buffCollections]);
+  useEffect(() => {
+    buffCollections.forEach((b) => {
+      console.table(b.buffs);
+    });
+  }, [buffCollections]);
 
   // runs on new request
   useEffect(() => {
@@ -150,10 +160,7 @@ export default function Optimizer() {
       <div className="optimize-section character-part">
         <div
           className="align-down-center"
-          style={{
-            alignItems: "flex-start",
-            gap: "2rem",
-          }}>
+          style={{ alignItems: "flex-start", gap: "2rem" }}>
           <Character
             characterStats={characterStats}
             updateCharacterStats={updateCharacterStats}

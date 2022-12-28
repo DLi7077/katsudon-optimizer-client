@@ -70,7 +70,7 @@ export default function Character(props) {
         }
         style={{ backgroundColor: props.characterBackgroundColor }}>
         <div className="align-down-center">
-          <span>Daamge Element:</span>
+          <span>Damage Element:</span>
 
           <ElementList
             update={(element) => {

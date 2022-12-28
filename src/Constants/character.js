@@ -33,8 +33,8 @@ export const BONUS_GAIN_TEMPLATE = [
     name: "Engulfing Lightning",
     source_stat: "energy_recharge", // final stat
     target_stat: "ATK %", // bonus stat
-    source_offset: 1.0, // divide by 100 if target stat is percentage on parse
-    percent_gain: 0.46, // divide by 100 on parse
+    source_offset: 100, // divide by 100 if target stat is percentage on parse
+    percent_gain: 46, // divide by 100 on parse
     max_gain: 1.2, // divide by 100 is target stat is percentage on parse
   },
 ];
