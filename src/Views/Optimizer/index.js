@@ -108,6 +108,29 @@ export default function Optimizer() {
     }, 2000);
   }
 
+  // useEffect(() => {
+  //   console.table(enemyStats);
+  // }, [enemyStats]);
+
+  // useEffect(() => {
+  //   console.table(characterStats);
+  // }, [characterStats]);
+
+  // useEffect(() => {
+  //   bonusStatGains.forEach((b) => {
+  //     console.table(b);
+  //   });
+  // }, [bonusStatGains]);
+  // useEffect(() => {
+  //   console.table(talentScalings);
+  // }, [talentScalings]);
+
+  // useEffect(() => {
+  //   buffCollections.forEach((b) => {
+  //     console.table(b.buffs);
+  //   });
+  // }, [buffCollections]);
+
   // runs on new request
   useEffect(() => {
     // console.log(result);
@@ -138,6 +161,9 @@ export default function Optimizer() {
             setCharacterBackgroundColor={(element) =>
               setCharacterBackgroundColor(ELEMENT_BACKGROUND[element])
             }
+            updateEnemyAffectedElement={(element) => {
+              updateEnemyStat("incoming_damage_element", element);
+            }}
           />
           <TalentScalings
             talentScalings={talentScalings}
@@ -153,6 +179,7 @@ export default function Optimizer() {
             setEnemyBackgroundColor={(element) =>
               setEnemyBackgroundColor(ELEMENT_BACKGROUND[element])
             }
+            incomingDamageElement={characterStats.element}
           />
         </div>
         <BuffCollections

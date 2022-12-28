@@ -74,6 +74,7 @@ export default function Character(props) {
             update={(element) => {
               props.setCharacterBackgroundColor(element);
               props.updateCharacterStats("element", element);
+              props.updateEnemyAffectedElement(element)
             }}
             style={{
               marginTop: "0.25rem",

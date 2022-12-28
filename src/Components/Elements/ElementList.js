@@ -29,7 +29,7 @@ export default function ElementList(props) {
       {map(ELEMENT_LIST, (element, idx) => {
         const isCurrentElement = elementIndex === idx;
         const borderStyle = isCurrentElement
-          ? { outline: `1px solid ${get(ELEMENT_BORDER, element.value)}` }
+          ? { outline: `2px solid ${get(ELEMENT_BORDER, element.value)}` }
           : {};
 
         return (
