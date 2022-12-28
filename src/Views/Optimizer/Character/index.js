@@ -1,6 +1,5 @@
 import ElementList from "../../../Components/Elements/ElementList";
 import LabelInput from "../../../Components/LabelInput";
-import { ELEMENT_BACKGROUND } from "../../../Constants/elements";
 import { map, pick } from "lodash";
 import BoxContainer from "../../../Components/BoxContainer";
 import { Typography } from "@mui/material";
@@ -27,34 +26,6 @@ const classes = {
 };
 
 export default function Character(props) {
-  function Header() {
-    function setElement(element) {
-      props.setCharacterBackgroundColor(ELEMENT_BACKGROUND[element]);
-      props.updateCharacterStats("element", element);
-    }
-
-    return (
-      <div style={{ ...classes.header, justifyContent: "space-between" }}>
-        <span style={{ ...classes.header, gap: "1rem" }}>
-          <Typography style={{ fontSize: "1.125rem" }}>Character</Typography>
-          <LabelInput
-            label={"Lv."}
-            style={{ width: "55px" }}
-            value={props.characterStats["level"]}
-            onChange={(e) => {
-              const updatedValue = parseFloat(e.target.value);
-              props.updateCharacterStats(
-                "level",
-                isNaN(updatedValue) ? 0 : updatedValue
-              );
-            }}
-          />
-        </span>
-        <ElementList update={setElement} />
-      </div>
-    );
-  }
-
   const leftStats = pick(props.characterStats, [
     "base_attack",
     "attack_percent",
@@ -85,7 +56,34 @@ export default function Character(props) {
     <div className="align-down-center" style={{ gap: "1rem" }}>
       <span className="section-title">Starting Stats</span>
       <BoxContainer
-        header={Header()}
+        header={
+          <div style={{ ...classes.header, justifyContent: "space-between" }}>
+            <span style={{ ...classes.header, gap: "1rem" }}>
+              <Typography style={{ fontSize: "1.125rem" }}>
+                Character
+              </Typography>
+              <LabelInput
+                label={"Lv."}
+                style={{ width: "55px" }}
+                value={props.characterStats["level"]}
+                onChange={(e) => {
+                  const updatedValue = parseFloat(e.target.value);
+                  props.updateCharacterStats(
+                    "level",
+                    isNaN(updatedValue) ? 0 : updatedValue
+                  );
+                }}
+              />
+            </span>
+            <ElementList
+              update={(element) => {
+                props.setCharacterBackgroundColor(element);
+                props.updateCharacterStats("element", element);
+              }}
+              element={props.characterStats.element}
+            />
+          </div>
+        }
         style={{ backgroundColor: props.characterBackgroundColor }}>
         <div style={classes.container}>
           <div style={classes.partitionContainer}>

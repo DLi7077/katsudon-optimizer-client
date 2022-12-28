@@ -20,7 +20,7 @@ export default function ElementList(props) {
   const [elementIndex, setElementIndex] = useState(defaultIndex);
 
   useEffect(() => {
-    props.update(ELEMENT_LIST[elementIndex].value);
+    props.update( ELEMENT_LIST[elementIndex].value);
     // eslint-disable-next-line
   }, [elementIndex]);
 
