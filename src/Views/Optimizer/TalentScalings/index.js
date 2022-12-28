@@ -33,7 +33,6 @@ export default function TalentScalings(props) {
                     value={talent_stat}
                     onChange={(e) => {
                       const updatedStat = e.target.value;
-                      console.log(updatedStat);
                       props.updateTalentScaling(
                         index,
                         updatedStat,
@@ -47,6 +46,14 @@ export default function TalentScalings(props) {
                   <NumberInput
                     value={talent_percent}
                     style={{ width: "41%" }}
+                    onChange={(e) => {
+                      const updatedValue = e.target.value;
+                      props.updateTalentScaling(
+                        index,
+                        talent_stat,
+                        isNaN(updatedValue) ? 0 : updatedValue
+                      );
+                    }}
                   />
                 </FormRow>
                 <CloseButton

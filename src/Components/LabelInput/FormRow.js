@@ -3,7 +3,7 @@ const classes = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    gap: "2rem",
+    gap: "1rem",
     width: "100%",
     margin: 0,
     padding: 0,
