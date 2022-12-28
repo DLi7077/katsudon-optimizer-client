@@ -71,7 +71,7 @@ export const ELEMENT_BORDER = {
   Dendro: "#A4FF84",
   Electro: "#C884FF",
   Geo: "#FFCE84",
-  Hydro: "#77ACEB",
+  Hydro: "#46BCFE",
   Physical: "#FFFFFF",
   None: "#FFFFFF",
 };

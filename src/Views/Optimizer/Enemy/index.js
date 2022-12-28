@@ -3,7 +3,7 @@ import BoxContainer from "../../../Components/BoxContainer";
 import FormRow from "../../../Components/LabelInput/FormRow";
 import NumberInput from "../../../Components/LabelInput/NumberInput";
 import ElementList from "../../../Components/Elements/ElementList";
-import { AFFECTED_ELEMENTS } from "../../../Constants/elements";
+import { AFFECTED_ELEMENTS, ELEMENT_BORDER } from "../../../Constants/elements";
 
 export default function Enemy(props) {
   const {
@@ -29,8 +29,8 @@ export default function Enemy(props) {
           style={{
             marginTop: "0.25rem",
             marginBottom: "0.5rem",
-            padding:'0.17rem',
-            backgroundColor:'rgba(0,0,0,0.4)'
+            padding: "0.17rem",
+            backgroundColor: "rgba(0,0,0,0.4)",
           }}
         />
         <FormRow>
@@ -49,7 +49,13 @@ export default function Enemy(props) {
           />
         </FormRow>
         <FormRow>
-          <span> Elemental Resistance%</span>
+          <span>
+            <span
+              style={{ color: ELEMENT_BORDER[props.incomingDamageElement] }}>
+              {props.incomingDamageElement}
+            </span>{" "}
+            Resistance%
+          </span>
           <NumberInput
             value={resistance_to_damage_element}
             style={{ width: "50px" }}
