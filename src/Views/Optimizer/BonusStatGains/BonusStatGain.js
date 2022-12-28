@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles.css";
 import FormRow from "../../../Components/LabelInput/FormRow";
 import TextInput from "../../../Components/LabelInput/TextInput";
 import DropdownSelect from "../../../Components/DropdownSelect";
@@ -32,7 +31,7 @@ export default function BonusStatGain(props) {
   } = props.bonusGain;
 
   return (
-    <div style={{ position: "relative", width: "fit-content" }}>
+    <div style={{ position: "relative", width: "350px" }}>
       <BoxContainer
         style={{ backgroundColor: "#606060" }}
         header={
