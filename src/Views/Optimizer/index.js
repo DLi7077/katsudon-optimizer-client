@@ -9,6 +9,7 @@ import BuffCollections from "./BuffCollections";
 import BonuStatGains from "./BonusStatGains";
 import TalentScalings from "./TalentScalings";
 import Enemy from "./Enemy";
+import { ELEMENT_BACKGROUND } from "../../Constants/elements";
 
 export default function Optimizer() {
   const {
@@ -43,8 +44,12 @@ export default function Optimizer() {
   const [result, setResult] = useState(null);
   const [requestStatus, setRequestStatus] = useState(null);
 
-  const [characterBackgroundColor, setCharacterBackgroundColor] =
-    useState(null);
+  const [characterBackgroundColor, setCharacterBackgroundColor] = useState(
+    ELEMENT_BACKGROUND[characterStats.element]
+  );
+  const [enemyBackgroundColor, setEnemyBackgroundColor] = useState(
+    ELEMENT_BACKGROUND[enemyStats.element]
+  );
 
   const intervalRef = useRef(null);
 
@@ -130,8 +135,8 @@ export default function Optimizer() {
             characterStats={characterStats}
             updateCharacterStats={updateCharacterStats}
             characterBackgroundColor={characterBackgroundColor}
-            setCharacterBackgroundColor={(bgc) =>
-              setCharacterBackgroundColor(bgc)
+            setCharacterBackgroundColor={(element) =>
+              setCharacterBackgroundColor(ELEMENT_BACKGROUND[element])
             }
           />
           <TalentScalings
@@ -141,7 +146,14 @@ export default function Optimizer() {
             updateTalentScaling={updateTalentScaling}
             characterBackgroundColor={characterBackgroundColor}
           />
-          <Enemy enemyStats={enemyStats} updateEnemyStat={updateEnemyStat} />
+          <Enemy
+            enemyStats={enemyStats}
+            updateEnemyStat={updateEnemyStat}
+            enemyBackgroundColor={enemyBackgroundColor}
+            setEnemyBackgroundColor={(element) =>
+              setEnemyBackgroundColor(ELEMENT_BACKGROUND[element])
+            }
+          />
         </div>
         <BuffCollections
           buffCollections={buffCollections}

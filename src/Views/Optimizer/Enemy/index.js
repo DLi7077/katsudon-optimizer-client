@@ -12,8 +12,10 @@ export default function Enemy(props) {
     resistance_to_damage_element,
     defense_percent_dropped,
   } = props.enemyStats;
+
   return (
     <BoxContainer
+      style={{ backgroundColor: props.enemyBackgroundColor }}
       header={<Typography style={{ fontSize: "1.125rem" }}>Enemy</Typography>}>
       <div className="align-down-center">
         <span>Affected Element:</span>
@@ -22,8 +24,14 @@ export default function Enemy(props) {
           elementList={AFFECTED_ELEMENTS}
           update={(element) => {
             props.updateEnemyStat("affected_element", element);
+            props.setEnemyBackgroundColor(element);
           }}
-          style={{ marginTop: "0.25rem", marginBottom: "1rem" }}
+          style={{
+            marginTop: "0.25rem",
+            marginBottom: "0.5rem",
+            padding:'0.17rem',
+            backgroundColor:'rgba(0,0,0,0.4)'
+          }}
         />
         <FormRow>
           <span>Level</span>
@@ -37,7 +45,6 @@ export default function Enemy(props) {
                 "level",
                 isNaN(updatedValue) ? 0 : updatedValue
               );
-              console.log(props.enemyStats);
             }}
           />
         </FormRow>
@@ -68,7 +75,6 @@ export default function Enemy(props) {
                 "defense_percent_dropped",
                 isNaN(updatedValue) ? 0 : updatedValue
               );
-              console.log(props.enemyStats);
             }}
           />
         </FormRow>

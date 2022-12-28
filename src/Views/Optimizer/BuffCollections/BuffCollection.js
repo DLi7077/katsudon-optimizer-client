@@ -34,14 +34,12 @@ export default function BuffCollection(props) {
         {map(get(props.collection, "buffs"), (buff, index) => {
           const { bonus_stat, bonus_amount } = buff;
           function updateBuffStat(stat) {
-            console.log(stat);
-            console.log(props.collection.buffs[index]);
             props.updateBuff(props.collectionIndex, index, stat, bonus_amount);
           }
           function updateBuffAmount(amount) {
             props.updateBuff(props.collectionIndex, index, bonus_stat, amount);
           }
-
+          
           return (
             <div
               style={{ position: "relative" }}
@@ -80,7 +78,6 @@ export default function BuffCollection(props) {
         <Separater />
         <AddButton
           onClick={() => {
-            console.log("add");
             props.addBuff(props.collectionIndex);
           }}
         />
