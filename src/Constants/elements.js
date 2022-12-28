@@ -6,6 +6,7 @@ import Geo from "../Assets/Elements/Geo.svg";
 import Hydro from "../Assets/Elements/Hydro.svg";
 import Physical from "../Assets/Elements/Physical.svg";
 import Pyro from "../Assets/Elements/Pyro.svg";
+import None from "../Assets/Elements/None.svg";
 
 export const ELEMENTS = [
   {
@@ -43,10 +44,23 @@ export const ELEMENTS = [
     value: "Geo",
     source: Geo,
   },
+];
+
+export const DAMAGE_ELEMENTS = [
+  ...ELEMENTS,
   {
     label: "Physical",
     value: "Physical",
     source: Physical,
+  },
+];
+
+export const AFFECTED_ELEMENTS = [
+  ...ELEMENTS,
+  {
+    label: "None",
+    value: "None",
+    source: None,
   },
 ];
 
@@ -59,6 +73,7 @@ export const ELEMENT_BORDER = {
   Geo: "#FFCE84",
   Hydro: "#77ACEB",
   Physical: "#FFFFFF",
+  None: "#FFFFFF",
 };
 
 export const ELEMENT_BACKGROUND = {
@@ -69,6 +84,6 @@ export const ELEMENT_BACKGROUND = {
   Electro: "#7C4A85",
   Geo: "#A68A44",
   Hydro: "#4F809B",
-  Physical: "#6F6F6F"
-
-}
+  Physical: "#6F6F6F",
+  None: "#6F6F6F",
+};

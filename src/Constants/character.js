@@ -1,6 +1,6 @@
 export const CHARACTER_STAT_TEMPLATE = {
   level: 90,
-  element: null,
+  element: "Pyro",
   base_attack: 0,
   attack_percent: 0,
   flat_attack: 0,

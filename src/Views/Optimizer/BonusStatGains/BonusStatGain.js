@@ -84,7 +84,7 @@ export default function BonusStatGain(props) {
               textDir="right"
               style={classes.numberField}
               onChange={(e) => {
-                const updatedValue = e.target.value;
+                const updatedValue = parseFloat(e.target.value);
                 updateBonusGain(
                   "source_offset",
                   isNaN(updatedValue) ? 0 : updatedValue
@@ -100,7 +100,7 @@ export default function BonusStatGain(props) {
               textDir="right"
               style={classes.numberField}
               onChange={(e) => {
-                const updatedValue = e.target.value;
+                const updatedValue = parseFloat(e.target.value);
                 updateBonusGain(
                   "percent_gain",
                   isNaN(updatedValue) ? 0 : updatedValue
@@ -116,7 +116,7 @@ export default function BonusStatGain(props) {
               textDir="right"
               style={classes.numberField}
               onChange={(e) => {
-                const updatedValue = e.target.value;
+                const updatedValue = parseFloat(e.target.value);
                 updateBonusGain(
                   "max_gain",
                   isNaN(updatedValue) ? 0 : updatedValue

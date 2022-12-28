@@ -47,7 +47,7 @@ export default function TalentScalings(props) {
                     value={talent_percent}
                     style={{ width: "41%" }}
                     onChange={(e) => {
-                      const updatedValue = e.target.value;
+                      const updatedValue = parseFloat(e.target.value);
                       props.updateTalentScaling(
                         index,
                         talent_stat,
