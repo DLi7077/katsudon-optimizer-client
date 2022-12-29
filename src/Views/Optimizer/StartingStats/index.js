@@ -5,7 +5,6 @@ import Enemy from "./Enemy";
 import BonusStatGains from "./BonusStatGains";
 import BuffCollections from "./BuffCollections";
 import "../styles.css";
-import { get } from "lodash";
 import { ELEMENT_BACKGROUND } from "../../../Constants/elements";
 
 export default function StartingStats({
