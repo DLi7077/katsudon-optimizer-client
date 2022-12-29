@@ -129,28 +129,26 @@ export default function Optimizer() {
     }, 2000);
   }
 
-  // useEffect(() => {
-  //   console.table(enemyStats);
-  // }, [enemyStats]);
+  // store to local storage on change
+  useEffect(() => {
+    localStorage.setItem("enemy-stats", JSON.stringify(enemyStats));
+  }, [enemyStats]);
 
-  // useEffect(() => {
-  //   console.table(characterStats);
-  // }, [characterStats]);
+  useEffect(() => {
+    localStorage.setItem("character-stats", JSON.stringify(characterStats));
+  }, [characterStats]);
 
-  // useEffect(() => {
-  //   bonusStatGains.forEach((b) => {
-  //     console.table(b);
-  //   });
-  // }, [bonusStatGains]);
-  // useEffect(() => {
-  //   console.table(talentScalings);
-  // }, [talentScalings]);
+  useEffect(() => {
+    localStorage.setItem("buff-collections", JSON.stringify(buffCollections));
+  }, [buffCollections]);
 
-  // useEffect(() => {
-  //   buffCollections.forEach((b) => {
-  //     console.table(b.buffs);
-  //   });
-  // }, [buffCollections]);
+  useEffect(() => {
+    localStorage.setItem("bonus-stat-gains", JSON.stringify(bonusStatGains));
+  }, [bonusStatGains]);
+
+  useEffect(() => {
+    localStorage.setItem("talent-scalings", JSON.stringify(talentScalings));
+  }, [talentScalings]);
 
   // runs on new request
   useEffect(() => {

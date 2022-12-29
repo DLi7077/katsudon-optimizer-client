@@ -1,8 +1,11 @@
-import { BUFF_COLLECTIONS } from "../../../Constants/character";
 import { createBuffCollection, createBuff } from "./createBuffCollection";
 import { useState } from "react";
+
 export default function useBuffCollectionControl() {
-  const [buffCollections, setBuffCollections] = useState(BUFF_COLLECTIONS);
+  const savedBuffedCollection = !!localStorage.getItem("buff-collections")
+    ? JSON.parse(localStorage.getItem("buff-collections"))
+    : [];
+  const [buffCollections, setBuffCollections] = useState(savedBuffedCollection);
 
   function changeBuffCollectionName(index, name) {
     const updatedBuffCollections = [...buffCollections];
