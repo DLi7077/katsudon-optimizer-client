@@ -1,15 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import useOptimizeControl from "../../Hooks/useOptimizeControl";
-import Character from "./StartingStats/Character";
 import Header from "./Header";
 import "./styles.css";
 import { createRequest, fetchRequest } from "../../Api/optimize";
 import { get } from "lodash";
-import BuffCollections from "./StartingStats/BuffCollections";
-import BonusStatGains from "./StartingStats/BonusStatGains";
-import TalentScalings from "./StartingStats/TalentScalings";
-import Enemy from "./StartingStats/Enemy";
-import { ELEMENT_BACKGROUND } from "../../Constants/elements";
 import {
   finalizedBonusStatGains,
   finalizedCharacterStats,
@@ -50,13 +44,6 @@ export default function Optimizer() {
   const [requestId, setRequestId] = useState(null);
   const [result, setResult] = useState(null);
   const [requestStatus, setRequestStatus] = useState(null);
-
-  const [characterBackgroundColor, setCharacterBackgroundColor] = useState(
-    ELEMENT_BACKGROUND[characterStats.element]
-  );
-  const [enemyBackgroundColor, setEnemyBackgroundColor] = useState(
-    ELEMENT_BACKGROUND[enemyStats.element]
-  );
 
   const intervalRef = useRef(null);
 
@@ -160,15 +147,12 @@ export default function Optimizer() {
     <div className="optimize-page">
       <Header />
       <StartingStats
-        // character
         characterStats={characterStats}
         updateCharacterStats={updateCharacterStats}
-        // talent scaling
         talentScalings={talentScalings}
         addTalentScaling={addTalentScaling}
         removeTalentScaling={removeTalentScaling}
         updateTalentScaling={updateTalentScaling}
-        // bonus stat gains
         bonusStatGains={bonusStatGains}
         addBonusStatGains={addBonusStatGains}
         removeBonusStatGain={removeBonusStatGain}
