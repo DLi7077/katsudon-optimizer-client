@@ -3,7 +3,12 @@ import createTalentScaling from "./createTalentScaling";
 import { TALENT_SCALING_TEMPLATE } from "../../../Constants/character";
 
 export default function useTalentScalingControl() {
-  const [talentScalings, setTalentScalings] = useState(TALENT_SCALING_TEMPLATE);
+  const savedTalents = !!localStorage.getItem("talent-scalings")
+    ? JSON.parse(localStorage.getItem("talent-scalings"))
+    : [];
+  const [talentScalings, setTalentScalings] = useState(
+    savedTalents.length ? savedTalents : TALENT_SCALING_TEMPLATE
+  );
 
   function addTalentScaling() {
     const createdScaling = createTalentScaling();

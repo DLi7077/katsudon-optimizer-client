@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { BONUS_GAIN_TEMPLATE } from "../../../Constants/character";
 import createBonusStatGain from "./createBonusStatGain";
 
 export default function useBonusStatGainControl() {
-  const [bonusStatGains, setBonusStatGains] = useState(BONUS_GAIN_TEMPLATE);
-
+  const savedBonusGains = !!localStorage.getItem("bonus-stat-gains")
+    ? JSON.parse(localStorage.getItem("bonus-stat-gains"))
+    : [];
+  const [bonusStatGains, setBonusStatGains] = useState(savedBonusGains);
+  
   function addBonusStatGains() {
     const createdBonus = createBonusStatGain();
 

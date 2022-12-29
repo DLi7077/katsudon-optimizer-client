@@ -1,6 +1,6 @@
 export const CHARACTER_STAT_TEMPLATE = {
   level: 90,
-  element: "Electro",
+  element: "Pyro",
   base_attack: 0,
   attack_percent: 0,
   flat_attack: 0,
@@ -25,7 +25,7 @@ export const CHARACTER_STAT_TEMPLATE = {
 };
 
 export const TALENT_SCALING_TEMPLATE = [
-  { talent_stat: "total_attack", talent_percent: 11.3 },
+  { talent_stat: "total_attack", talent_percent: 1141 },
 ];
 
 export const BONUS_GAIN_TEMPLATE = [

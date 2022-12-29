@@ -1,5 +1,6 @@
 export default function createBonusStatGain() {
   return {
+    name: "",
     source_stat: "",
     target_stat: "",
     source_offset: 0, // divide by 100 if target stat is percentage on parse
