@@ -61,4 +61,14 @@ export function finalizedBonusStatGains(bonusStatGains) {
   return finalizedBonusGains;
 }
 
+export function finalizedTalentScalings(talentScalings) {
+  const finializedScalings = talentScalings.map((talentScaling) => {
+    const { talent_stat, talent_percent } = talentScaling;
+    return {
+      talent_stat: talent_stat,
+      talent_percent: percentToDecimal(talent_percent),
+    };
+  });
 
+  return finializedScalings;
+}
