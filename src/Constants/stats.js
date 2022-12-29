@@ -13,34 +13,13 @@ export const ARTIFACT_SUBSTATS = [
 
 export const DAMAGE_BONUSES = [
   { label: "Anemo DMG Bonus%", value: "Anemo DMG Bonus%" },
-  {
-    label: "Cryo DMG Bonus%",
-    value: "Cryo DMG Bonus%",
-  },
-  {
-    label: "Dendro DMG Bonus%",
-    value: "Dendro DMG Bonus%",
-  },
-  {
-    label: "Electro DMG Bonus%",
-    value: "Electro DMG Bonus%",
-  },
-  {
-    label: "Geo DMG Bonus%",
-    value: "Geo DMG Bonus%",
-  },
-  {
-    label: "Hydro DMG Bonus%",
-    value: "Hydro DMG Bonus%",
-  },
-  {
-    label: "Pyro DMG Bonus%",
-    value: "Pyro DMG Bonus%",
-  },
-  {
-    label: "Physical DMG Bonus%",
-    value: "Physical DMG Bonus%",
-  },
+  { label: "Cryo DMG Bonus%", value: "Cryo DMG Bonus%" },
+  { label: "Dendro DMG Bonus%", value: "Dendro DMG Bonus%" },
+  { label: "Electro DMG Bonus%", value: "Electro DMG Bonus%" },
+  { label: "Geo DMG Bonus%", value: "Geo DMG Bonus%" },
+  { label: "Hydro DMG Bonus%", value: "Hydro DMG Bonus%" },
+  { label: "Pyro DMG Bonus%", value: "Pyro DMG Bonus%" },
+  { label: "Physical DMG Bonus%", value: "Physical DMG Bonus%" },
 ];
 
 export const FLOWER_MAIN_STATS = [{ label: "HP", value: "Flat HP" }];
