@@ -18,7 +18,16 @@ export default function ArtifactPreference({
         preferredSubstats={artifactPreference.substats}
         updateSubstatPreference={updateSubstatPreference}
       />
-      <MainStatPreference />
+      <MainStatPreference
+        flowerMainStats={artifactPreference.flower_main_stats}
+        featherMainStats={artifactPreference.feather_main_stats}
+        sandsMainStats={artifactPreference.sands_main_stats}
+        gobletMainStats={artifactPreference.goblet_main_stats}
+        circletMainStats={artifactPreference.circlet_main_stats}
+        updateSandsPreference={updateSandsPreference}
+        updateGobletPreference={updateGobletPreference}
+        updateCircletPreference={updateCircletPreference}
+      />
     </div>
   );
 }
