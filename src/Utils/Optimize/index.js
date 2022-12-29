@@ -1,35 +1,9 @@
 import { STAT_LABEL } from "../../Constants/labels";
-import BuffCollection from "../../Views/Optimizer/BuffCollections/BuffCollection";
 import { reduce } from "lodash";
 import { isPercentageStat } from "../validate";
 
-/*
-  characterStats : {
-    level: 90,
-    element: "Electro",
-    base_attack: 0,
-    attack_percent: 0,
-    flat_attack: 0,
-    base_hp: 0,
-    hp_percent: 0,
+const percentToDecimal = (x) => x * 0.01;
 
-    flat_hp: 0,
-    base_def: 0,
-    def_percent: 0,
-    flat_def: 0,
-    elemental_mastery: 0,
-    energy_recharge: 0,
-    crit_rate: 0,
-    crit_damage: 0,
-    damage_bonus_elemental: 0,
-    damage_bonus_talent: 0,
-    damage_bonus_all: 0,
-    melt_bonus: 0,
-    base_damage_bonus: 0,
-    defense_shred: 0,
-    quicken_bonus: 0,
-  }
-*/
 export function addBuffsToCharacter(characterStats, buffCollections) {
   const buffedCharacter = buffCollections.reduce(
     (character, buffCollection) => {
@@ -47,10 +21,7 @@ export function addBuffsToCharacter(characterStats, buffCollections) {
   return buffedCharacter;
 }
 
-// to operate on character
-
-export function percentageStatsToDecimal() {}
-
+const PERCENT_TO_DECIMAL = 0.01;
 export function finalizedCharacterStats(characterStats, buffCollections) {
   const buffedCharacter = addBuffsToCharacter(characterStats, buffCollections);
   // convert percentage stats to decimal
@@ -58,7 +29,6 @@ export function finalizedCharacterStats(characterStats, buffCollections) {
     buffedCharacter,
     (finalizedCharacter, amount, stat) => {
       const statIsPercent = isPercentageStat(STAT_LABEL[stat]);
-      const PERCENT_TO_DECIMAL = 0.01;
       finalizedCharacter[stat] = statIsPercent
         ? amount * PERCENT_TO_DECIMAL
         : amount;
@@ -69,3 +39,26 @@ export function finalizedCharacterStats(characterStats, buffCollections) {
 
   return finalizedCharacterStats;
 }
+
+export function finalizedBonusStatGains(bonusStatGains) {
+  const finalizedBonusGains = bonusStatGains.map((bonusGain) => {
+    const { source_stat, target_stat, source_offset, percent_gain, max_gain } =
+      bonusGain;
+
+    const sourceIsPercent = isPercentageStat(STAT_LABEL[source_stat]);
+    const targetIsPercent = isPercentageStat(target_stat);
+
+    return {
+      ...bonusGain,
+      source_offset: sourceIsPercent
+        ? percentToDecimal(source_offset)
+        : source_offset,
+      percent_gain: percentToDecimal(percent_gain),
+      max_gain: targetIsPercent ? percentToDecimal(max_gain) : max_gain,
+    };
+  });
+
+  return finalizedBonusGains;
+}
+
+

@@ -11,7 +11,7 @@ import TalentScalings from "./TalentScalings";
 import Enemy from "./Enemy";
 import { ELEMENT_BACKGROUND } from "../../Constants/elements";
 import {
-  addBuffsToCharacter,
+  finalizedBonusStatGains,
   finalizedCharacterStats,
 } from "../../Utils/Optimize";
 
@@ -64,6 +64,9 @@ export default function Optimizer() {
       buffCollections
     );
     console.table(finalizedCharacter);
+
+    const finalizedBonusGains = finalizedBonusStatGains(bonusStatGains);
+    console.table(finalizedBonusGains);
 
     // const requestPayload = {
     //   character: {
@@ -122,9 +125,9 @@ export default function Optimizer() {
   //   console.table(enemyStats);
   // }, [enemyStats]);
 
-  useEffect(() => {
-    console.table(characterStats);
-  }, [characterStats]);
+  // useEffect(() => {
+  //   console.table(characterStats);
+  // }, [characterStats]);
 
   // useEffect(() => {
   //   bonusStatGains.forEach((b) => {
@@ -135,11 +138,11 @@ export default function Optimizer() {
   //   console.table(talentScalings);
   // }, [talentScalings]);
 
-  useEffect(() => {
-    buffCollections.forEach((b) => {
-      console.table(b.buffs);
-    });
-  }, [buffCollections]);
+  // useEffect(() => {
+  //   buffCollections.forEach((b) => {
+  //     console.table(b.buffs);
+  //   });
+  // }, [buffCollections]);
 
   // runs on new request
   useEffect(() => {
