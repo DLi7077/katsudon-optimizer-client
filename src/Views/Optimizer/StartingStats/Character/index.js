@@ -1,10 +1,10 @@
-import ElementList from "../../../Components/Elements/ElementList";
-import LabelInput from "../../../Components/LabelInput";
+import ElementList from "../../../../Components/Elements/ElementList";
+import LabelInput from "../../../../Components/LabelInput";
 import { map, pick } from "lodash";
-import BoxContainer from "../../../Components/BoxContainer";
+import BoxContainer from "../../../../Components/BoxContainer";
 import { Typography } from "@mui/material";
-import { STAT_LABEL } from "../../../Constants/labels";
-import "../styles.css";
+import { STAT_LABEL } from "../../../../Constants/labels";
+import "../../styles.css";
 
 const classes = {
   container: {
