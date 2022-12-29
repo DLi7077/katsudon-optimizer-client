@@ -11,6 +11,7 @@ import {
   finalizedTalentScalings,
 } from "../../Utils/Optimize";
 import StartingStats from "./StartingStats";
+import ArtifactPreference from "./ArtifactPreference";
 
 export default function Optimizer() {
   const {
@@ -170,6 +171,7 @@ export default function Optimizer() {
         enemyStats={enemyStats}
         updateEnemyStat={updateEnemyStat}
       />
+      <ArtifactPreference />
       <button
         onClick={() => {
           createOptimizeRequest();
