@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
-import BoxContainer from "../../../Components/BoxContainer";
-import FormRow from "../../../Components/LabelInput/FormRow";
-import NumberInput from "../../../Components/LabelInput/NumberInput";
-import ElementList from "../../../Components/Elements/ElementList";
-import { AFFECTED_ELEMENTS, ELEMENT_BORDER } from "../../../Constants/elements";
+import BoxContainer from "../../../../Components/BoxContainer";
+import FormRow from "../../../../Components/LabelInput/FormRow";
+import NumberInput from "../../../../Components/LabelInput/NumberInput";
+import ElementList from "../../../../Components/Elements/ElementList";
+import { AFFECTED_ELEMENTS, ELEMENT_BORDER } from "../../../../Constants/elements";
 
 export default function Enemy(props) {
   const {
