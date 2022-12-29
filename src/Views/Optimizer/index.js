@@ -40,6 +40,13 @@ export default function Optimizer() {
     // enemy
     enemyStats,
     updateEnemyStat,
+
+    // artifact preference
+    artifactPreference,
+    updateSubstatPreference,
+    updateSandsPreference,
+    updateGobletPreference,
+    updateCircletPreference,
   } = useOptimizeControl();
 
   const [requestId, setRequestId] = useState(null);
@@ -171,7 +178,13 @@ export default function Optimizer() {
         enemyStats={enemyStats}
         updateEnemyStat={updateEnemyStat}
       />
-      <ArtifactPreference />
+      <ArtifactPreference
+        artifactPreference={artifactPreference}
+        updateSubstatPreference={updateSubstatPreference}
+        updateSandsPreference={updateSandsPreference}
+        updateGobletPreference={updateGobletPreference}
+        updateCircletPreference={updateCircletPreference}
+      />
       <button
         onClick={() => {
           createOptimizeRequest();

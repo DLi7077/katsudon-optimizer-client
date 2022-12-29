@@ -3,6 +3,7 @@ import useTalentScalingControl from "./useTalentScalingControl";
 import useBuffCollectionControl from "./useBuffCollectionControl";
 import useBonusStatGainControl from "./useBonusStatGainControl";
 import useEnemyStatControl from "./useEnemyStatControl";
+import useArtifactPreferenceControl from "./useArtifactPreferenceControl";
 
 export default function useOptimizeControl() {
   const { characterStats, updateCharacterStats } = useCharacterStatControl();
@@ -33,6 +34,14 @@ export default function useOptimizeControl() {
 
   const { enemyStats, updateEnemyStat } = useEnemyStatControl();
 
+  const {
+    artifactPreference,
+    updateSubstatPreference,
+    updateSandsPreference,
+    updateGobletPreference,
+    updateCircletPreference,
+  } = useArtifactPreferenceControl();
+
   return {
     // character
     characterStats,
@@ -59,5 +68,11 @@ export default function useOptimizeControl() {
     // enemy
     enemyStats,
     updateEnemyStat,
+    // artifact preference
+    artifactPreference,
+    updateSubstatPreference,
+    updateSandsPreference,
+    updateGobletPreference,
+    updateCircletPreference,
   };
 }

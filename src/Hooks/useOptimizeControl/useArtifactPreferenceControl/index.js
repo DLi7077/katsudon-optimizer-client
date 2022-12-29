@@ -1,5 +1,6 @@
 import { useState } from "react";
 import _ from "lodash";
+import { ARTIFACT_SUBSTATS } from "../../../Constants/stats";
 
 const DEFAULT_PREFERENCES = {
   substats: [
@@ -18,51 +19,45 @@ const DEFAULT_PREFERENCES = {
 
 export default function useArtifactPreferenceControl() {
   const [artifactPreference, setArtifactPreference] = useState({
-    substats: [], // >=5
+    substats: ARTIFACT_SUBSTATS.map((stat) => ({ ...stat, selected: false })), // >=5
     flower_main_stats: ["Flat HP"], // immutable
     feather_main_stats: ["Flat Attack"], // immutable
-    sands_main_stats: ["ATK %"], // >=1
-    goblet_main_stats: ["Pyro DMG Bonus%"], // >=1
-    circlet_main_stats: ["Crit Damage"], // >=1
+    sands_main_stats: [], // >=1
+    goblet_main_stats: [], // >=1
+    circlet_main_stats: [], // >=1
   });
 
   // substatList is an array of stat objects with keys: label, value, selected
-  function updateSubstatPreference(substatList) {
+  // toggle substat preference at [index] to be !selected
+  // consider this: https://stackoverflow.com/a/16784323 to change selected state
+  function updateSubstatPreference(index) {
     const updatedArtifactPreference = { ...artifactPreference };
-    updatedArtifactPreference.substats = chain(substatList)
-      .filter((stat) => !!stat.selected)
-      .map((stat) => stat.value)
-      .value();
+    updatedArtifactPreference.substats[index].selected =
+      !updatedArtifactPreference.substats[index].selected;
 
     setArtifactPreference(updatedArtifactPreference);
   }
 
-  function updateSandsPreference(mainStatList) {
+  function updateSandsPreference(index) {
     const updatedArtifactPreference = { ...artifactPreference };
-    updatedArtifactPreference.sands_main_stats = chain(mainStatList)
-      .filter((stat) => !!stat.selected)
-      .map((stat) => stat.value)
-      .value();
+    updatedArtifactPreference.sands_main_stats[index].selected =
+      !updatedArtifactPreference.sands_main_stats[index].selected;
 
     setArtifactPreference(updatedArtifactPreference);
   }
 
-  function updateGobletPreference(mainStatList) {
+  function updateGobletPreference(index) {
     const updatedArtifactPreference = { ...artifactPreference };
-    updatedArtifactPreference.goblet_main_stats = chain(mainStatList)
-      .filter((stat) => !!stat.selected)
-      .map((stat) => stat.value)
-      .value();
+    updatedArtifactPreference.goblet_main_stats[index].selected =
+      !updatedArtifactPreference.goblet_main_stats[index].selected;
 
     setArtifactPreference(updatedArtifactPreference);
   }
 
-  function updateCircletPreference(mainStatList) {
+  function updateCircletPreference(index) {
     const updatedArtifactPreference = { ...artifactPreference };
-    updatedArtifactPreference.circlet_main_stats = chain(mainStatList)
-      .filter((stat) => !!stat.selected)
-      .map((stat) => stat.value)
-      .value();
+    updatedArtifactPreference.circlet_main_stats[index].selected =
+      !updatedArtifactPreference.circlet_main_stats[index].selected;
 
     setArtifactPreference(updatedArtifactPreference);
   }
