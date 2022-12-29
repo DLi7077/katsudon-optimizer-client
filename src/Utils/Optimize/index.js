@@ -88,3 +88,34 @@ export function finalizedEnemyStats(enemyStats) {
 
   return finalEnemyStats;
 }
+
+function selectedStatValues(stats) {
+  return stats.filter((stat) => stat.selected).map((stat) => stat.value);
+}
+
+export function finalizedArtifactPreference(artifactPreference) {
+  const {
+    substats,
+    flower_main_stats,
+    feather_main_stats,
+    sands_main_stats,
+    goblet_main_stats,
+    circlet_main_stats,
+  } = artifactPreference;
+
+  const finalSubstats = selectedStatValues(substats);
+  const finalFlowerMainStats = selectedStatValues(flower_main_stats);
+  const finalFeatherMainStats = selectedStatValues(feather_main_stats);
+  const finalSandsMainStats = selectedStatValues(sands_main_stats);
+  const finalGobletMainStats = selectedStatValues(goblet_main_stats);
+  const finalCircletMainStats = selectedStatValues(circlet_main_stats);
+
+  return {
+    substats: finalSubstats,
+    flower_main_stats: finalFlowerMainStats,
+    feather_main_stats: finalFeatherMainStats,
+    sands_main_stats: finalSandsMainStats,
+    goblet_main_stats: finalGobletMainStats,
+    circlet_main_stats: finalCircletMainStats,
+  };
+}

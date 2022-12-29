@@ -5,6 +5,7 @@ import "./styles.css";
 import { createRequest, fetchRequest } from "../../Api/optimize";
 import { get } from "lodash";
 import {
+  finalizedArtifactPreference,
   finalizedBonusStatGains,
   finalizedCharacterStats,
   finalizedEnemyStats,
@@ -64,11 +65,8 @@ export default function Optimizer() {
     const finalTalentScalings = finalizedTalentScalings(talentScalings);
     const finalBonusStatGains = finalizedBonusStatGains(bonusStatGains);
     const finalEnemyStats = finalizedEnemyStats(enemyStats);
-
-    console.table(finalCharacterStats);
-    console.table(finalTalentScalings);
-    console.table(finalBonusStatGains);
-    console.table(finalEnemyStats);
+    const finalArtifactPreferences =
+      finalizedArtifactPreference(artifactPreference);
 
     const requestPayload = {
       character: {
@@ -77,20 +75,7 @@ export default function Optimizer() {
         bonus_stat_gain: finalBonusStatGains,
       },
       enemy: finalEnemyStats,
-      stat_preferences: {
-        substats: [
-          "Flat Attack",
-          "ATK %",
-          "Elemental Mastery",
-          "Energy Recharge%",
-          "Crit Damage",
-        ],
-        flower_main_stats: ["Flat HP"],
-        feather_main_stats: ["Flat Attack"],
-        sands_main_stats: ["ATK %", "Energy Recharge%"],
-        goblet_main_stats: ["Electro DMG Bonus%", "ATK %"],
-        circlet_main_stats: ["ATK %", "Crit Damage"],
-      },
+      stat_preferences: finalArtifactPreferences,
     };
 
     await createRequest(requestPayload)
