@@ -8,47 +8,45 @@ import {
   CIRCLET_MAIN_STATS,
 } from "../../../Constants/stats";
 
-// const DEFAULT_PREFERENCES = {
-//   substats: [
-//     "Flat Attack",
-//     "ATK %",
-//     "Elemental Mastery",
-//     "Energy Recharge%",
-//     "Crit Damage",
-//   ],
-//   flower_main_stats: ["Flat HP"],
-//   feather_main_stats: ["Flat Attack"],
-//   sands_main_stats: ["ATK %", "Energy Recharge%"],
-//   goblet_main_stats: ["Electro DMG Bonus%", "ATK %"],
-//   circlet_main_stats: ["ATK %", "Crit Damage"],
-// };
+const DEFAULT_PREFERENCES = {
+  substats: ARTIFACT_SUBSTATS.map((stat) => ({ ...stat, selected: false })), // >=5
+  flower_main_stats: FLOWER_MAIN_STATS.map((stat) => ({
+    ...stat,
+    selected: true,
+    disabled: true, // immutable
+  })),
+  feather_main_stats: FEATHER_MAIN_STATS.map((stat) => ({
+    ...stat,
+    selected: true,
+    disabled: true, // immutable
+  })),
+  sands_main_stats: SANDS_MAIN_STATS.map((stat) => ({
+    ...stat,
+    selected: false,
+  })),
+  goblet_main_stats: GOBLET_MAIN_STATS.map((stat) => ({
+    ...stat,
+    selected: false,
+  })),
+  circlet_main_stats: CIRCLET_MAIN_STATS.map((stat) => ({
+    ...stat,
+    selected: false,
+  })),
+};
 
 export default function useArtifactPreferenceControl() {
-  const [artifactPreference, setArtifactPreference] = useState({
-    substats: ARTIFACT_SUBSTATS.map((stat) => ({ ...stat, selected: false })), // >=5
-    flower_main_stats: FLOWER_MAIN_STATS.map((stat) => ({
-      ...stat,
-      selected: true,
-      disabled: true, // immutable
-    })),
-    feather_main_stats: FEATHER_MAIN_STATS.map((stat) => ({
-      ...stat,
-      selected: true,
-      disabled: true, // immutable
-    })),
-    sands_main_stats: SANDS_MAIN_STATS.map((stat) => ({
-      ...stat,
-      selected: false,
-    })),
-    goblet_main_stats: GOBLET_MAIN_STATS.map((stat) => ({
-      ...stat,
-      selected: false,
-    })),
-    circlet_main_stats: CIRCLET_MAIN_STATS.map((stat) => ({
-      ...stat,
-      selected: false,
-    })),
-  });
+  const savedPreference = localStorage.getItem("artifact-preference")
+    ? JSON.parse(localStorage.getItem("artifact-preference"))
+    : DEFAULT_PREFERENCES;
+
+  const [artifactPreference, setArtifactPreference] = useState(savedPreference);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "artifact-preference",
+      JSON.stringify(artifactPreference)
+    );
+  }, [artifactPreference]);
 
   // substatList is an array of stat objects with keys: label, value, selected
   // toggle substat preference at [index] to be !selected
