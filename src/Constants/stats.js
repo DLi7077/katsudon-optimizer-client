@@ -35,11 +35,11 @@ export const SANDS_MAIN_STATS = [
 ];
 
 export const GOBLET_MAIN_STATS = [
-  ...DAMAGE_BONUSES,
   { label: "ATK%", value: "ATK %" },
   { label: "HP%", value: "HP %" },
   { label: "DEF%", value: "DEF %" },
   { label: "Elem. Mastery", value: "Elemental Mastery" },
+  ...DAMAGE_BONUSES,
 ];
 
 export const CIRCLET_MAIN_STATS = [

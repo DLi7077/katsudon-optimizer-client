@@ -1,6 +1,6 @@
 import React from "react";
-import FlowerStatPreference from "./FlowerStatPreference";
-import FeatherStatPreference from "./FeatherStatPreference";
+import ArtifactStatPreference from "./ArtifactStatPreference";
+import { map, omit, pick } from "lodash";
 
 const classes = {
   title: {
@@ -14,6 +14,33 @@ const classes = {
 function doNothing() {}
 
 export default function MainStatPreference(props) {
+  const artifactPieces = {
+    flower: {
+      mainStats: props.flowerMainStats,
+      update: doNothing,
+    },
+    feather: {
+      mainStats: props.featherMainStats,
+      update: doNothing,
+    },
+    sands: {
+      mainStats: props.sandsMainStats,
+      update: props.updateSandsPreference,
+    },
+    goblet: {
+      mainStats: props.gobletMainStats,
+      update: props.updateGobletPreference,
+    },
+    circlet: {
+      mainStats: props.circletMainStats,
+      update: props.updateCircletPreference,
+    },
+  };
+
+  const disabledPieces = ["flower", "feather"];
+  const disabledArtifactPieces = pick(artifactPieces, disabledPieces);
+  const enabledArtifactPieces = omit(artifactPieces, disabledPieces);
+
   return (
     <div className="align-down-center" style={{ gap: "1rem" }}>
       <div style={classes.title}>
@@ -23,17 +50,30 @@ export default function MainStatPreference(props) {
         </div>
       </div>
       <div className="align-horizontal-center" style={{ gap: "4rem" }}>
-        <FlowerStatPreference
-          mainStats={props.flowerMainStats}
-          update={doNothing}
-        />
-        <FeatherStatPreference
-          mainStats={props.featherMainStats}
-          update={doNothing}
-        />
+        {map(disabledArtifactPieces, ({ mainStats, update }, piece) => {
+          return (
+            <ArtifactStatPreference
+              key={`artifact-${piece}-main-stat-selection`}
+              mainStats={mainStats}
+              piece={piece}
+              update={update}
+            />
+          );
+        })}
       </div>
-      <div className="align-horizontal-center" style={{ gap: "4rem" }}>
-
+      <div
+        className="align-horizontal-center"
+        style={{ alignItems: "flex-start", gap: "2rem", flexWrap: "wrap" }}>
+        {map(enabledArtifactPieces, ({ mainStats, update }, piece) => {
+          return (
+            <ArtifactStatPreference
+              key={`artifact-${piece}-main-stat-selection`}
+              mainStats={mainStats}
+              piece={piece}
+              update={update}
+            />
+          );
+        })}
       </div>
     </div>
   );
