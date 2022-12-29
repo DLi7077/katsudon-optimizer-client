@@ -4,13 +4,15 @@ import "../styles.css";
 import Title from "./Title";
 import MainStatPreference from "./MainStatPreference";
 
-export default function ArtifactPreference({
-  artifactPreference,
-  updateSubstatPreference,
-  updateSandsPreference,
-  updateGobletPreference,
-  updateCircletPreference,
-}) {
+export default function ArtifactPreference(props) {
+  const {
+    artifactPreference,
+    updateSubstatPreference,
+    updateSandsPreference,
+    updateGobletPreference,
+    updateCircletPreference,
+  } = props;
+
   return (
     <div className="optimize-section artifact-part">
       <Title />
@@ -28,6 +30,7 @@ export default function ArtifactPreference({
         updateGobletPreference={updateGobletPreference}
         updateCircletPreference={updateCircletPreference}
       />
+      {props.children}
     </div>
   );
 }
