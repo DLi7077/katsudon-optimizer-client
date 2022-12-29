@@ -3,7 +3,7 @@ import React from "react";
 const classes = {
   statItem: {
     padding: "0.25rem",
-    paddingInline: "1rem",
+    paddingInline: "0.75rem",
     borderRadius: "100px",
     cursor: "pointer",
     backgroundColor: "#000000",
@@ -17,20 +17,27 @@ const classes = {
     backgroundColor: "#000000",
   },
   selected: {
-    backgroundColor: "#4E5A5F",
-    outline: "1px solid white",
+    backgroundColor: "#8B5A37",
+  },
+  disabled: {
+    backgroundColor: "#2E3762",
+    cursor: "not-allowed",
   },
 };
 
-export default function StatItem({ label, selected, updateSelected }) {
+export default function StatItem({
+  label,
+  selected,
+  disabled,
+  updateSelected,
+}) {
   return (
     <div
-      onClick={() => {
-        updateSelected();
-      }}
+      onClick={updateSelected}
       style={{
         ...classes.statItem,
         ...(selected ? classes.selected : classes.notSelected),
+        ...(disabled ? classes.disabled : {}),
       }}>
       {label}
     </div>
