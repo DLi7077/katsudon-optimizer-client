@@ -13,6 +13,7 @@ import { ELEMENT_BACKGROUND } from "../../Constants/elements";
 import {
   finalizedBonusStatGains,
   finalizedCharacterStats,
+  finalizedEnemyStats,
   finalizedTalentScalings,
 } from "../../Utils/Optimize";
 
@@ -71,6 +72,9 @@ export default function Optimizer() {
 
     const finalizedScalings = finalizedTalentScalings(talentScalings);
     console.table(finalizedScalings);
+
+    const finalEnemyStats = finalizedEnemyStats(enemyStats);
+    console.table(finalEnemyStats);
 
     // const requestPayload = {
     //   character: {
