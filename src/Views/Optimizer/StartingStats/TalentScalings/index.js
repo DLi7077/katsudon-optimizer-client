@@ -1,15 +1,15 @@
 import React, { Fragment } from "react";
-import BoxContainer from "../../../Components/BoxContainer";
-import "../styles.css";
-import FormRow from "../../../Components/LabelInput/FormRow";
+import BoxContainer from "../../../../Components/BoxContainer";
+import "../../styles.css";
+import FormRow from "../../../../Components/LabelInput/FormRow";
 import { map } from "lodash";
-import DropdownSelect from "../../../Components/DropdownSelect";
-import { FINAL_STATS } from "../../../Constants/stats";
-import NumberInput from "../../../Components/LabelInput/NumberInput";
-import CloseButton from "../../../Components/Buttons/CloseButton";
+import DropdownSelect from "../../../../Components/DropdownSelect";
+import { FINAL_STATS } from "../../../../Constants/stats";
+import NumberInput from "../../../../Components/LabelInput/NumberInput";
+import CloseButton from "../../../../Components/Buttons/CloseButton";
 import { Typography } from "@mui/material";
-import AddButton from "../../../Components/Buttons/AddButton";
-import Separater from "../../../Components/Separater";
+import AddButton from "../../../../Components/Buttons/AddButton";
+import Separater from "../../../../Components/Separater";
 
 export default function TalentScalings(props) {
   return (

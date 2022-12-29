@@ -1,13 +1,13 @@
 import { get, map } from "lodash";
-import DropdownSelect from "../../../Components/DropdownSelect";
-import { BUFFABLE_STATS } from "../../../Constants/buffs";
-import LabelInput from "../../../Components/LabelInput";
+import DropdownSelect from "../../../../Components/DropdownSelect";
+import { BUFFABLE_STATS } from "../../../../Constants/buffs";
+import LabelInput from "../../../../Components/LabelInput";
 import "./styles.css";
-import BoxContainer from "../../../Components/BoxContainer";
-import CloseButton from "../../../Components/Buttons/CloseButton";
-import AddButton from "../../../Components/Buttons/AddButton";
-import TextInput from "../../../Components/LabelInput/TextInput";
-import Separater from "../../../Components/Separater";
+import BoxContainer from "../../../../Components/BoxContainer";
+import CloseButton from "../../../../Components/Buttons/CloseButton";
+import AddButton from "../../../../Components/Buttons/AddButton";
+import TextInput from "../../../../Components/LabelInput/TextInput";
+import Separater from "../../../../Components/Separater";
 
 export default function BuffCollection(props) {
   return (
@@ -39,7 +39,7 @@ export default function BuffCollection(props) {
           function updateBuffAmount(amount) {
             props.updateBuff(props.collectionIndex, index, bonus_stat, amount);
           }
-          
+
           return (
             <div
               style={{ position: "relative" }}

@@ -1,7 +1,7 @@
 import { map } from "lodash";
 import React from "react";
 import BuffCollection from "./BuffCollection";
-import AddButton from "../../../Components/Buttons/AddButton";
+import AddButton from "../../../../Components/Buttons/AddButton";
 import "./styles.css";
 
 export default function BuffCollections(props) {

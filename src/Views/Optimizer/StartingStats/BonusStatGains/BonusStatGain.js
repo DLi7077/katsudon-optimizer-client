@@ -1,13 +1,13 @@
 import React from "react";
-import FormRow from "../../../Components/LabelInput/FormRow";
-import TextInput from "../../../Components/LabelInput/TextInput";
-import DropdownSelect from "../../../Components/DropdownSelect";
-import { FINAL_STATS, BONUS_STATS } from "../../../Constants/stats";
-import BoxContainer from "../../../Components/BoxContainer";
-import NumberInput from "../../../Components/LabelInput/NumberInput";
-import CloseButton from "../../../Components/Buttons/CloseButton";
-import { isPercentageStat } from "../../../Utils/validate";
-import { STAT_LABEL } from "../../../Constants/labels";
+import FormRow from "../../../../Components/LabelInput/FormRow";
+import TextInput from "../../../../Components/LabelInput/TextInput";
+import DropdownSelect from "../../../../Components/DropdownSelect";
+import { FINAL_STATS, BONUS_STATS } from "../../../../Constants/stats";
+import BoxContainer from "../../../../Components/BoxContainer";
+import NumberInput from "../../../../Components/LabelInput/NumberInput";
+import CloseButton from "../../../../Components/Buttons/CloseButton";
+import { isPercentageStat } from "../../../../Utils/validate";
+import { STAT_LABEL } from "../../../../Constants/labels";
 
 const classes = {
   numberField: {
