@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ARTIFACT_SUBSTATS,
   FLOWER_MAIN_STATS,

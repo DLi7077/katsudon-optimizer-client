@@ -13,6 +13,7 @@ import {
 } from "../../Utils/Optimize";
 import StartingStats from "./StartingStats";
 import ArtifactPreference from "./ArtifactPreference";
+import OptimizeButton from "../../Components/Buttons/OptimizeButton";
 
 export default function Optimizer() {
   const {
@@ -168,14 +169,13 @@ export default function Optimizer() {
         updateSubstatPreference={updateSubstatPreference}
         updateSandsPreference={updateSandsPreference}
         updateGobletPreference={updateGobletPreference}
-        updateCircletPreference={updateCircletPreference}
-      />
-      <button
-        onClick={() => {
-          createOptimizeRequest();
-        }}>
-        Optimize
-      </button>
+        updateCircletPreference={updateCircletPreference}>
+        <OptimizeButton
+          onClick={() => {
+            createOptimizeRequest();
+          }}
+        />
+      </ArtifactPreference>
     </div>
   );
 }

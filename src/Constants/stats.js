@@ -43,11 +43,12 @@ export const GOBLET_MAIN_STATS = [
 ];
 
 export const CIRCLET_MAIN_STATS = [
-  { label: "Elem. Mastery", value: "Elemental Mastery" },
-  { label: "Crit Damage%", value: "Crit Damage" },
   { label: "ATK%", value: "ATK %" },
   { label: "HP%", value: "HP %" },
   { label: "DEF%", value: "DEF %" },
+  { label: "Elem. Mastery", value: "Elemental Mastery" },
+  { label: "Crit Damage%", value: "Crit Damage" },
+  { label: "Crit Rate%", value: "Crit Rate" },
 ];
 
 export const FINAL_STATS = [
