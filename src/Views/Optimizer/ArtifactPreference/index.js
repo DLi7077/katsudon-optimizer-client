@@ -4,11 +4,20 @@ import "../styles.css";
 import Title from "./Title";
 import MainStatPreference from "./MainStatPreference";
 
-export default function ArtifactPreference() {
+export default function ArtifactPreference({
+  artifactPreference,
+  updateSubstatPreference,
+  updateSandsPreference,
+  updateGobletPreference,
+  updateCircletPreference,
+}) {
   return (
     <div className="optimize-section artifact-part">
       <Title />
-      <SubstatPreference />
+      <SubstatPreference
+        preferredSubstats={artifactPreference.substats}
+        updateSubstatPreference={updateSubstatPreference}
+      />
       <MainStatPreference />
     </div>
   );
