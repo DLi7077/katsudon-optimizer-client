@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import useOptimizeControl from "../../Hooks/useOptimizeControl";
-import Character from "./Character";
+import Character from "./StartingStats/Character";
 import Header from "./Header";
 import "./styles.css";
 import { createRequest, fetchRequest } from "../../Api/optimize";
