@@ -21,4 +21,6 @@ export const STAT_LABEL = {
   base_damage_bonus: "Base DMG Bonus",
   defense_shred: "Defense Shred%",
   quicken_bonus: "Quicken Bonus%",
+  resistance_to_damage_element: "Elemental Resistance%",
+  defense_percent_dropped: "Defense Dropped%",
 };

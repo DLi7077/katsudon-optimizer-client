@@ -61,60 +61,52 @@ export default function Optimizer() {
 
   // creates the optimize request
   async function createOptimizeRequest() {
-    const finalizedCharacter = finalizedCharacterStats(
+    const finalCharacterStats = finalizedCharacterStats(
       characterStats,
       buffCollections
     );
-    console.table(finalizedCharacter);
-
-    const finalizedBonusGains = finalizedBonusStatGains(bonusStatGains);
-    console.table(finalizedBonusGains);
-
-    const finalizedScalings = finalizedTalentScalings(talentScalings);
-    console.table(finalizedScalings);
-
+    const finalTalentScalings = finalizedTalentScalings(talentScalings);
+    const finalBonusStatGains = finalizedBonusStatGains(bonusStatGains);
     const finalEnemyStats = finalizedEnemyStats(enemyStats);
+
+    console.table(finalCharacterStats);
+    console.table(finalTalentScalings);
+    console.table(finalBonusStatGains);
     console.table(finalEnemyStats);
 
-    // const requestPayload = {
-    //   character: {
-    //     stats: characterStats,
-    //     talent_scalings: talentScalings,
-    //     bonus_stat_gain: bonusStatGains,
-    //   },
-    //   enemy: {
-    //     level: 90,
-    //     affected_element: "Dendro",
-    //     incoming_damage_element: "Electro",
-    //     resistance_to_damage_element: -1.2,
-    //     defense_percent_dropped: 0.3,
-    //   },
-    //   stat_preferences: {
-    //     substats: [
-    //       "Flat Attack",
-    //       "ATK %",
-    //       "Elemental Mastery",
-    //       "Energy Recharge%",
-    //       "Crit Damage",
-    //     ],
-    //     flower_main_stats: ["Flat HP"],
-    //     feather_main_stats: ["Flat Attack"],
-    //     sands_main_stats: ["ATK %", "Energy Recharge%"],
-    //     goblet_main_stats: ["Electro DMG Bonus%", "ATK %"],
-    //     circlet_main_stats: ["ATK %", "Crit Damage"],
-    //   },
-    // };
+    const requestPayload = {
+      character: {
+        stats: finalCharacterStats,
+        talent_scalings: finalTalentScalings,
+        bonus_stat_gain: finalBonusStatGains,
+      },
+      enemy: finalEnemyStats,
+      stat_preferences: {
+        substats: [
+          "Flat Attack",
+          "ATK %",
+          "Elemental Mastery",
+          "Energy Recharge%",
+          "Crit Damage",
+        ],
+        flower_main_stats: ["Flat HP"],
+        feather_main_stats: ["Flat Attack"],
+        sands_main_stats: ["ATK %", "Energy Recharge%"],
+        goblet_main_stats: ["Electro DMG Bonus%", "ATK %"],
+        circlet_main_stats: ["ATK %", "Crit Damage"],
+      },
+    };
 
-    // await createRequest(requestPayload)
-    //   .then((createdRequest) => {
-    //     setRequestId(get(createdRequest, "_id"));
-    //     setResult(null);
-    //     setRequestStatus(get(createdRequest, "status"));
-    //     console.log(createdRequest);
-    //   })
-    //   .catch(() => {
-    //     console.error("could not create a request");
-    //   });
+    await createRequest(requestPayload)
+      .then((createdRequest) => {
+        setRequestId(get(createdRequest, "_id"));
+        setResult(null);
+        setRequestStatus(get(createdRequest, "status"));
+        console.log(createdRequest);
+      })
+      .catch(() => {
+        console.error("could not create a request");
+      });
   }
   // checks request status every 2 seconds
   async function waitForResult() {
@@ -152,8 +144,8 @@ export default function Optimizer() {
 
   // runs on new request
   useEffect(() => {
-    // console.log(result);
-    // console.log(requestStatus);
+    console.log(result);
+    console.log(requestStatus);
 
     if (!requestId || !requestStatus) {
       clearInterval(intervalRef.current);
