@@ -72,3 +72,19 @@ export function finalizedTalentScalings(talentScalings) {
 
   return finializedScalings;
 }
+
+export function finalizedEnemyStats(enemyStats) {
+  const finalEnemyStats = reduce(
+    enemyStats,
+    (finalizedEnemy, amount, stat) => {
+      const statIsPercent = isPercentageStat(STAT_LABEL[stat]);
+      finalizedEnemy[stat] = statIsPercent
+        ? amount * PERCENT_TO_DECIMAL
+        : amount;
+      return finalizedEnemy;
+    },
+    {}
+  );
+
+  return finalEnemyStats;
+}
