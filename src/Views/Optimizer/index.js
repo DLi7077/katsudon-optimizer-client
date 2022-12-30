@@ -177,7 +177,7 @@ export default function Optimizer() {
           }}
         />
       </ArtifactPreference>
-      <OptimizeResult optimizeResult={result} />
+      {!!result && <OptimizeResult optimizeResult={result} />}
     </div>
   );
 }

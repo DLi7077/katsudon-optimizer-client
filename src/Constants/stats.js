@@ -47,8 +47,8 @@ export const CIRCLET_MAIN_STATS = [
   { label: "HP%", value: "HP %" },
   { label: "DEF%", value: "DEF %" },
   { label: "Elem. Mastery", value: "Elemental Mastery" },
-  { label: "Crit Damage%", value: "Crit Damage" },
-  { label: "Crit Rate%", value: "Crit Rate" },
+  { label: "Crit Damage%", value: "Crit Damage%" },
+  { label: "Crit Rate%", value: "Crit Rate%" },
 ];
 
 export const FINAL_STATS = [

@@ -5,9 +5,11 @@ import Substat from "./Substat.js";
 
 const classes = {
   artifact: {
-    padding: "0.35rem",
+    padding: "0.5rem",
     paddingInline: "1rem",
     width: "250px",
+    backgroundColor: "black",
+    outline: "1px solid white",
   },
   mainStat: {
     display: "flex",
@@ -16,6 +18,7 @@ const classes = {
     fontSize: "1.125rem",
     textAlign: "right",
     gap: "1rem",
+    marginBottom: "0.5rem",
   },
   substatList: {
     display: "flex",

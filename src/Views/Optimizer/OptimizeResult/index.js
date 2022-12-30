@@ -4,6 +4,15 @@ import Artifact from "./Artifact";
 
 const pieceIndex = ["flower", "feather", "sands", "goblet", "circlet"];
 
+const classes = {
+  artifacts: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "4rem",
+    flexWrap: "wrap",
+  },
+};
+
 export default function OptimizeResult({ optimizeResult }) {
   const result = {
     _id: "63ae9f5c232acfc806e90ddc",
@@ -212,27 +221,26 @@ export default function OptimizeResult({ optimizeResult }) {
     __v: 0,
   };
 
-  const { character, analysis } = result;
+  const { character, analysis } = optimizeResult;
   const { artifacts, bonuses, stats } = character;
 
   return (
     <div className="optimize-section result-part">
-      {!!true && (
-        <div className="align-down-center">
-          <Title />
-          {artifacts.map((artifact, idx) => {
-            const piece = pieceIndex[idx];
-            return (
-              <Artifact
-                key={`optimized-${piece}`}
-                piece={piece}
-                substats={artifact.substats}
-                mainstat={artifact.main_stat}
-              />
-            );
-          })}
-        </div>
-      )}
+
+      <Title />
+      <div style={classes.artifacts}>
+        {artifacts.map((artifact, idx) => {
+          const piece = pieceIndex[idx];
+          return (
+            <Artifact
+              key={`optimized-${piece}`}
+              piece={piece}
+              substats={artifact.substats}
+              mainstat={artifact.main_stat}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
