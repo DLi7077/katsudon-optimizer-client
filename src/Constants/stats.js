@@ -7,8 +7,8 @@ export const ARTIFACT_SUBSTATS = [
   { label: "DEF", value: "Flat Defense" },
   { label: "Energy Recharge%", value: "Energy Recharge%" },
   { label: "Elem. Mastery", value: "Elemental Mastery" },
-  { label: "Crit Rate%", value: "Crit Rate" },
-  { label: "Crit Damage%", value: "Crit Damage" },
+  { label: "Crit Rate%", value: "Crit Rate%" },
+  { label: "Crit Damage%", value: "Crit Damage%" },
 ];
 
 export const DAMAGE_BONUSES = [

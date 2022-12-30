@@ -14,6 +14,7 @@ import {
 import StartingStats from "./StartingStats";
 import ArtifactPreference from "./ArtifactPreference";
 import OptimizeButton from "../../Components/Buttons/OptimizeButton";
+import OptimizeResult from "./OptimizeResult";
 
 export default function Optimizer() {
   const {
@@ -93,7 +94,7 @@ export default function Optimizer() {
   // checks request status every 2 seconds
   async function waitForResult() {
     clearInterval(intervalRef.current);
-    if (requestStatus === "complete") return;
+    if (["complete", "error"].includes(requestStatus)) return;
 
     intervalRef.current = setInterval(async () => {
       await fetchRequest(requestId).then((request) => {
@@ -176,6 +177,7 @@ export default function Optimizer() {
           }}
         />
       </ArtifactPreference>
+      <OptimizeResult optimizeResult={result} />
     </div>
   );
 }

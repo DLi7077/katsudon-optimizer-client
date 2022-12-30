@@ -1,5 +1,5 @@
 import React from "react";
-import { ARTIFACT_PIECE } from "../../../../Constants/artifact";
+import { ARTIFACT_PIECE } from "../Constants/artifact";
 
 const classes = {
   artifactPiece: {
@@ -7,11 +7,11 @@ const classes = {
     height: "64px",
   },
 };
-export default function ArtifactPiece({ piece }) {
+export default function ArtifactIcon({ piece, style }) {
   return (
     <img
       src={ARTIFACT_PIECE[piece]}
-      style={classes.artifactPiece}
+      style={{ ...classes.artifactPiece, ...style }}
       alt={`${piece} artifact piece`}
     />
   );
