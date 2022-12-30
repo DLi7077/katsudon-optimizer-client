@@ -1,6 +1,8 @@
 import React from "react";
 import Title from "./Title";
 import Artifact from "./Artifact";
+import { get } from "lodash";
+import { LinearProgress } from "@mui/material";
 
 const pieceIndex = ["flower", "feather", "sands", "goblet", "circlet"];
 
@@ -11,9 +13,15 @@ const classes = {
     gap: "4rem",
     flexWrap: "wrap",
   },
+  loadingBar: {
+    width: "min(100%,600px)",
+    height: "6px",
+    backgroundColor: "black",
+    borderRadius: "100px",
+  },
 };
 
-export default function OptimizeResult({ optimizeResult }) {
+export default function OptimizeResult({ optimizeResult, awaiting }) {
   const result = {
     _id: "63ae9f5c232acfc806e90ddc",
     character: {
@@ -221,26 +229,28 @@ export default function OptimizeResult({ optimizeResult }) {
     __v: 0,
   };
 
-  const { character, analysis } = optimizeResult;
-  const { artifacts, bonuses, stats } = character;
+  // const { character, analysis } = optimizeResult;
+  // const { artifacts, bonuses, stats } = character;
 
   return (
     <div className="optimize-section result-part">
-
       <Title />
-      <div style={classes.artifacts}>
-        {artifacts.map((artifact, idx) => {
-          const piece = pieceIndex[idx];
-          return (
-            <Artifact
-              key={`optimized-${piece}`}
-              piece={piece}
-              substats={artifact.substats}
-              mainstat={artifact.main_stat}
-            />
-          );
-        })}
-      </div>
+      {!!awaiting && <LinearProgress style={classes.loadingBar} />}
+      {!!optimizeResult && (
+        <div style={classes.artifacts}>
+          {get(optimizeResult, "character.artifacts").map((artifact, idx) => {
+            const piece = pieceIndex[idx];
+            return (
+              <Artifact
+                key={`optimized-${piece}`}
+                piece={piece}
+                substats={artifact.substats}
+                mainstat={artifact.main_stat}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

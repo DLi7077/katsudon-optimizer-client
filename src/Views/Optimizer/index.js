@@ -55,6 +55,7 @@ export default function Optimizer() {
   const [requestId, setRequestId] = useState(null);
   const [result, setResult] = useState(null);
   const [requestStatus, setRequestStatus] = useState(null);
+  const [awaiting, setAwaiting] = useState(false);
 
   const intervalRef = useRef(null);
 
@@ -85,6 +86,7 @@ export default function Optimizer() {
         setRequestId(get(createdRequest, "_id"));
         setResult(null);
         setRequestStatus(get(createdRequest, "status"));
+
         console.log(createdRequest);
       })
       .catch(() => {
@@ -93,8 +95,12 @@ export default function Optimizer() {
   }
   // checks request status every 2 seconds
   async function waitForResult() {
+    setAwaiting(true);
     clearInterval(intervalRef.current);
-    if (["complete", "error"].includes(requestStatus)) return;
+    if (["complete", "error"].includes(requestStatus)) {
+      setAwaiting(false);
+      return;
+    }
 
     intervalRef.current = setInterval(async () => {
       await fetchRequest(requestId).then((request) => {
@@ -138,6 +144,10 @@ export default function Optimizer() {
     // eslint-disable-next-line
   }, [requestId, result, requestStatus]);
 
+  useEffect(() => {
+    console.log(awaiting);
+  }, [awaiting]);
+
   return (
     <div className="optimize-page">
       <Header />
@@ -177,7 +187,7 @@ export default function Optimizer() {
           }}
         />
       </ArtifactPreference>
-      {!!result && <OptimizeResult optimizeResult={result} />}
+      <OptimizeResult optimizeResult={result} awaiting={awaiting} />
     </div>
   );
 }
