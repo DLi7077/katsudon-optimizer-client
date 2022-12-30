@@ -1,5 +1,5 @@
 import React from "react";
-import ArtifactPiece from "./ArtifactPiece";
+import ArtifactIcon from "../../../../Components/ArtifactIcon";
 import StatItem from "../StatItem";
 
 export default function ArtifactStatPreference(props) {
@@ -14,7 +14,7 @@ export default function ArtifactStatPreference(props) {
   return (
     <div className="align-down-center">
       <div className="align-horizontal-center">
-        <ArtifactPiece piece={props.piece} />
+        <ArtifactIcon piece={props.piece} />
         {disabledStats.map((mainStat, idx) => {
           return (
             <StatItem
