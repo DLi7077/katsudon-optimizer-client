@@ -15,6 +15,7 @@ import StartingStats from "./StartingStats";
 import ArtifactPreference from "./ArtifactPreference";
 import OptimizeButton from "../../Components/Buttons/OptimizeButton";
 import OptimizeResult from "./OptimizeResult";
+import { ELEMENT_BORDER } from "../../Constants/elements";
 
 export default function Optimizer() {
   const {
@@ -144,9 +145,7 @@ export default function Optimizer() {
     // eslint-disable-next-line
   }, [requestId, result, requestStatus]);
 
-  useEffect(() => {
-    console.log(awaiting);
-  }, [awaiting]);
+  useEffect(() => {}, [awaiting]);
 
   return (
     <div className="optimize-page">
@@ -187,7 +186,11 @@ export default function Optimizer() {
           }}
         />
       </ArtifactPreference>
-      <OptimizeResult optimizeResult={result} awaiting={awaiting} />
+      <OptimizeResult
+        optimizeResult={result}
+        awaiting={awaiting}
+        damageColor={ELEMENT_BORDER[characterStats.element]}
+      />
     </div>
   );
 }
