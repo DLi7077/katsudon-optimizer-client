@@ -1,8 +1,11 @@
 import React from "react";
-import Title from "./Title";
 import Artifact from "./Artifact";
 import { get, map } from "lodash";
 import { LinearProgress } from "@mui/material";
+import {
+  PENDING_LOAD_COLOR,
+  PROCESSING_LOAD_COLOR,
+} from "../../../Constants/colors";
 
 const pieceIndex = ["flower", "feather", "sands", "goblet", "circlet"];
 
@@ -12,12 +15,6 @@ const classes = {
     justifyContent: "center",
     gap: "2rem",
     flexWrap: "wrap",
-  },
-  loadingBar: {
-    width: "min(100%,600px)",
-    height: "6px",
-    backgroundColor: "black",
-    borderRadius: "100px",
   },
   finalStatContainer: {
     backgroundColor: "black",
@@ -35,15 +32,39 @@ const classes = {
     alignItems: "center",
     rowGap: "1rem",
   },
+  title: {
+    fontSize: "1.5rem",
+  },
   subtitle: {
     fontSize: "1.25rem",
+  },
+  loadingBar: {
+    width: "min(100%,600px)",
+    height: "4px",
+    backgroundColor: "black",
+    borderRadius: "100px",
+    "& .MuiLinearProgress-bar": {
+      backgroundColor: "white",
+    },
+  },
+  pending: {
+    "& .MuiLinearProgress-bar": {
+      backgroundColor: PENDING_LOAD_COLOR,
+    },
+  },
+  processing: {
+    "& .MuiLinearProgress-bar": {
+      backgroundColor: PROCESSING_LOAD_COLOR,
+    },
   },
 };
 
 export default function OptimizeResult({
+  scrollRef,
   optimizeResult,
   awaiting,
   damageColor,
+  requestStatus,
 }) {
   const finalStats = [
     "level",
@@ -69,13 +90,28 @@ export default function OptimizeResult({
   ];
 
   return (
-    <div className="optimize-section result-part">
-      <Title />
-      {!!awaiting && <LinearProgress style={classes.loadingBar} />}
-      {!!optimizeResult && (
+    <div className="optimize-section result-part" ref={scrollRef}>
+      {!!awaiting && (
+        <div
+          className="align-down-center"
+          style={{
+            gap: "1rem",
+            width: "100%",
+          }}>
+          <LinearProgress
+            sx={{
+              ...classes.loadingBar,
+              ...(requestStatus === "pending" ? classes.pending : {}),
+              ...(requestStatus === "processing" ? classes.processing : {}),
+            }}
+          />
+          <div>{requestStatus}...</div>
+        </div>
+      )}
+      {!awaiting && !!optimizeResult && (
         <>
           <div style={classes.groupContainer}>
-            <span style={classes.subtitle}>
+            <span style={classes.title}>
               Damage Ceiling :
               <span style={{ color: damageColor }}>
                 {" "}
@@ -109,8 +145,7 @@ export default function OptimizeResult({
                   </div>
                 );
               })}
-            </div>
-            <div style={classes.finalStatContainer}>
+              <br />
               {map(get(optimizeResult, `analysis`), (value, stat) => {
                 return (
                   <div
