@@ -105,8 +105,16 @@ export default function OptimizeResult({
               ...(requestStatus === "processing" ? classes.processing : {}),
             }}
           />
-          <div>{requestStatus}...</div>
+          <div>{requestStatus === "pending" ? "Pending..." : ""}</div>
+          <div>
+            {requestStatus === "processing"
+              ? "Processing... (this might take a minute)"
+              : ""}
+          </div>
         </div>
+      )}
+      {!awaiting && !optimizeResult && (
+        <div> Something went wrong... try it again</div>
       )}
       {!awaiting && !!optimizeResult && (
         <>
