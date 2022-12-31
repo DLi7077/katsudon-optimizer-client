@@ -113,7 +113,7 @@ export default function OptimizeResult({
           </div>
         </div>
       )}
-      {!awaiting && !optimizeResult && (
+      {requestStatus === "error" && (
         <div> Something went wrong... try it again</div>
       )}
       {!awaiting && !!optimizeResult && (
