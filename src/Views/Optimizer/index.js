@@ -147,7 +147,6 @@ export default function Optimizer() {
   }, [requestId, result, requestStatus]);
 
   function scrollToOptimize() {
-    console.log(scrollRef);
      scrollRef.current.scrollIntoView();
   }
 
