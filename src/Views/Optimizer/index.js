@@ -59,6 +59,7 @@ export default function Optimizer() {
   const [awaiting, setAwaiting] = useState(false);
 
   const intervalRef = useRef(null);
+  const scrollRef = useRef(null);
 
   // creates the optimize request
   async function createOptimizeRequest() {
@@ -145,7 +146,10 @@ export default function Optimizer() {
     // eslint-disable-next-line
   }, [requestId, result, requestStatus]);
 
-  useEffect(() => {}, [awaiting]);
+  function scrollToOptimize() {
+    console.log(scrollRef);
+     scrollRef.current.scrollIntoView();
+  }
 
   return (
     <div className="optimize-page">
@@ -183,12 +187,15 @@ export default function Optimizer() {
         <OptimizeButton
           onClick={() => {
             createOptimizeRequest();
+            scrollToOptimize();
           }}
         />
       </ArtifactPreference>
       <OptimizeResult
+        scrollRef={scrollRef}
         optimizeResult={result}
         awaiting={awaiting}
+        requestStatus={requestStatus}
         damageColor={ELEMENT_BORDER[characterStats.element]}
       />
     </div>
