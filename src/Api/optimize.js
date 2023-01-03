@@ -1,7 +1,9 @@
-const LOCALHOST_URL = "http://localhost:5000/api";
+// const API_URL = "http://localhost:5000/api";
+const API_URL = "https://katsudon-optimizer-server.herokuapp.com/api";
+
 
 export async function createRequest(optimizeStats) {
-  const createUrl = `${LOCALHOST_URL}/optimizer/request/create`;
+  const createUrl = `${API_URL}/optimizer/request/create`;
   const response = await fetch(createUrl, {
     method: "POST",
     cache: "no-cache",
@@ -14,7 +16,7 @@ export async function createRequest(optimizeStats) {
 }
 
 export async function fetchRequest(requestId) {
-  return await fetch(`${LOCALHOST_URL}/optimizer/request?id=${requestId}`).then(
+  return await fetch(`${API_URL}/optimizer/request?id=${requestId}`).then(
     (res) => res.json()
   );
 }

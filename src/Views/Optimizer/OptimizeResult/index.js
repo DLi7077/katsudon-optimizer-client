@@ -6,6 +6,7 @@ import {
   PENDING_LOAD_COLOR,
   PROCESSING_LOAD_COLOR,
 } from "../../../Constants/colors";
+import { timeGapMS } from "../../../Utils/time";
 
 const pieceIndex = ["flower", "feather", "sands", "goblet", "circlet"];
 
@@ -23,7 +24,7 @@ const classes = {
     columnCount: 2,
   },
   finalStat: {
-    fontSize: "0.8rem",
+    fontSize: "0.9rem",
     width: "fit-content",
   },
   groupContainer: {
@@ -65,6 +66,8 @@ export default function OptimizeResult({
   awaiting,
   damageColor,
   requestStatus,
+  createTime,
+  finishTime,
 }) {
   const finalStats = [
     "level",
@@ -126,6 +129,12 @@ export default function OptimizeResult({
                 {get(optimizeResult, `analysis.damage_output`)}
               </span>
             </span>
+            <span style={{ fontSize: "1.125rem" }}>
+              Runtime :{" "}
+              {timeGapMS(new Date(createTime), new Date(finishTime)) / 1000}s
+            </span>
+          </div>
+          <div className="align-down-center" style={{ gap: "2rem" }}>
             <span style={classes.subtitle}>Optimized Artifacts</span>
             <div style={classes.artifacts}>
               {get(optimizeResult, "character.artifacts").map(

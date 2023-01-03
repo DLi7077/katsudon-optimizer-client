@@ -53,9 +53,8 @@ export default function Optimizer() {
     updateCircletPreference,
   } = useOptimizeControl();
 
-  const [requestId, setRequestId] = useState(null);
+  const [createdRequest, setCreatedRequest] = useState(null);
   const [result, setResult] = useState(null);
-  const [requestStatus, setRequestStatus] = useState(null);
   const [awaiting, setAwaiting] = useState(false);
 
   const intervalRef = useRef(null);
@@ -85,11 +84,8 @@ export default function Optimizer() {
 
     await createRequest(requestPayload)
       .then((createdRequest) => {
-        setRequestId(get(createdRequest, "_id"));
+        setCreatedRequest(createdRequest);
         setResult(null);
-        setRequestStatus(get(createdRequest, "status"));
-
-        console.log(createdRequest);
       })
       .catch(() => {
         console.error("could not create a request");
@@ -99,14 +95,14 @@ export default function Optimizer() {
   async function waitForResult() {
     setAwaiting(true);
     clearInterval(intervalRef.current);
-    if (["complete", "error"].includes(requestStatus)) {
+    if (["complete", "error"].includes(get(createdRequest, "status"))) {
       setAwaiting(false);
       return;
     }
 
     intervalRef.current = setInterval(async () => {
-      await fetchRequest(requestId).then((request) => {
-        setRequestStatus(get(request, "status"));
+      await fetchRequest(get(createdRequest, "_id")).then((request) => {
+        setCreatedRequest({ ...createdRequest, ...request });
         setResult(get(request, "result") ?? null);
       });
     }, 2000);
@@ -135,19 +131,18 @@ export default function Optimizer() {
 
   // runs on new request
   useEffect(() => {
-    console.log(result);
-    console.log(requestStatus);
+    console.log(get(createdRequest, "status"));
 
-    if (!requestId || !requestStatus) {
+    if (!get(createdRequest, "_id") || !get(createdRequest, "status")) {
       clearInterval(intervalRef.current);
       return;
     }
     waitForResult();
     // eslint-disable-next-line
-  }, [requestId, result, requestStatus]);
+  }, [get(createdRequest, "status"), result]);
 
   function scrollToOptimize() {
-     scrollRef.current.scrollIntoView();
+    scrollRef.current.scrollIntoView();
   }
 
   return (
@@ -194,7 +189,9 @@ export default function Optimizer() {
         scrollRef={scrollRef}
         optimizeResult={result}
         awaiting={awaiting}
-        requestStatus={requestStatus}
+        requestStatus={!!createdRequest && get(createdRequest, "status")}
+        createTime={!!createdRequest && get(createdRequest, "created_at")}
+        finishTime={!!result && get(result, "created_at")}
         damageColor={ELEMENT_BORDER[characterStats.element]}
       />
     </div>
