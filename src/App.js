@@ -7,17 +7,16 @@ function App() {
       primary: {
         main: "#FFFFFF",
       },
-      secondary:{
-        main:"#606060"
-      }
+      secondary: {
+        main: "#606060",
+      },
     },
   });
+  
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Optimizer />
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <Optimizer />
+    </ThemeProvider>
   );
 }
 
