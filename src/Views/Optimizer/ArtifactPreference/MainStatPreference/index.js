@@ -44,7 +44,7 @@ export default function MainStatPreference(props) {
   return (
     <div className="align-down-center" style={{ gap: "1rem" }}>
       <div style={classes.title}>
-        <div style={{ fontSize: "1.5rem" }}>Substat Preferences</div>
+        <div style={{ fontSize: "1.5rem" }}>Main stat Preferences</div>
         <div style={{ color: "#C68C62" }}>
           *pick at least 1 main stat per artifact peice
         </div>
