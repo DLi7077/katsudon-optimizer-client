@@ -1,4 +1,4 @@
-export default function Separater() {
+export default function Separater({ style }) {
   return (
     <div
       style={{
@@ -7,6 +7,7 @@ export default function Separater() {
         marginTop: "0.5rem",
         marginBottom: "0.5rem",
         width: "100%",
+        ...style,
       }}
     />
   );

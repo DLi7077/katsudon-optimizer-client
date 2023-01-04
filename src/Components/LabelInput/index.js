@@ -1,11 +1,11 @@
-import { TextField } from "@mui/material";
+import NumberInput from "./NumberInput";
 
 const classes = {
   statSpan: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "250px",
+    maxWidth: "250px",
   },
 };
 
@@ -13,8 +13,8 @@ export default function LabelInput({ style, label, value, onChange }) {
   return (
     <span style={{ ...classes.statSpan, ...style }}>
       <span>{label}</span>
-      <TextField
-        style={{ width: "min(100%,80px)" }}
+      <NumberInput
+        style={{ width: "min(100%,69px)" }}
         type="number"
         variant="standard"
         value={value}
