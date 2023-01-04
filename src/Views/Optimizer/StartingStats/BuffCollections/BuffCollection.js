@@ -11,7 +11,7 @@ import Separater from "../../../../Components/Separater";
 
 export default function BuffCollection(props) {
   return (
-    <div style={{ position: "relative", width: "fit-content" }}>
+    <div style={{ position: "relative" }}>
       <BoxContainer
         style={{ backgroundColor: "#606060" }}
         header={
@@ -75,13 +75,14 @@ export default function BuffCollection(props) {
             </div>
           );
         })}
-        <Separater />
+        <Separater style={{ minWidth: "250px" }} />
         <AddButton
           onClick={() => {
             props.addBuff(props.collectionIndex);
           }}
         />
       </BoxContainer>
+
       <CloseButton
         style={{ position: "absolute", top: 0, right: 0 }}
         onClick={() => {

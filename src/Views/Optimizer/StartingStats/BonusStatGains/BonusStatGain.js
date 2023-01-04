@@ -11,7 +11,7 @@ import { STAT_LABEL } from "../../../../Constants/labels";
 
 const classes = {
   numberField: {
-    width: "48%",
+    width: "40%",
     marginTop: "5px",
     marginBottom: "5px",
   },
@@ -31,7 +31,7 @@ export default function BonusStatGain(props) {
   } = props.bonusGain;
 
   return (
-    <div style={{ position: "relative", width: "350px" }}>
+    <div style={{ position: "relative" }}>
       <BoxContainer
         style={{ backgroundColor: "#606060" }}
         header={
