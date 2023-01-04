@@ -16,6 +16,7 @@ import ArtifactPreference from "./ArtifactPreference";
 import OptimizeButton from "../../Components/Buttons/OptimizeButton";
 import OptimizeResult from "./OptimizeResult";
 import { ELEMENT_BORDER } from "../../Constants/elements";
+import OptimizerFilterSlider from "../../Components/OptimizerFilterSlider";
 
 export default function Optimizer() {
   const {
@@ -56,6 +57,7 @@ export default function Optimizer() {
   const [createdRequest, setCreatedRequest] = useState(null);
   const [result, setResult] = useState(null);
   const [awaiting, setAwaiting] = useState(false);
+  const [optimizeFilter, setOptimizeFilter] = useState(50);
 
   const intervalRef = useRef(null);
   const scrollRef = useRef(null);
@@ -80,6 +82,7 @@ export default function Optimizer() {
       },
       enemy: finalEnemyStats,
       stat_preferences: finalArtifactPreferences,
+      optimize_filter: optimizeFilter,
     };
 
     await createRequest(requestPayload)
@@ -178,6 +181,16 @@ export default function Optimizer() {
         updateSandsPreference={updateSandsPreference}
         updateGobletPreference={updateGobletPreference}
         updateCircletPreference={updateCircletPreference}>
+        <div className="align-down-center" style={{ width: "100%" }}>
+          <span>Optimize Filter</span>
+          <OptimizerFilterSlider
+            style={{ width: "min(95%,600px)" }}
+            value={optimizeFilter}
+            onChange={(e) => {
+              setOptimizeFilter(e.target.value);
+            }}
+          />
+        </div>
         <OptimizeButton
           onClick={() => {
             createOptimizeRequest();
