@@ -16,7 +16,8 @@ import ArtifactPreference from "./ArtifactPreference";
 import OptimizeButton from "../../Components/Buttons/OptimizeButton";
 import OptimizeResult from "./OptimizeResult";
 import { ELEMENT_BORDER } from "../../Constants/elements";
-import OptimizerFilterSlider from "../../Components/OptimizerFilterSlider";
+import OptimizerFilterSlider from "../../Components/Optimizer/OptimizerFilterSlider";
+import FilterHelperText from "../../Components/Optimizer/FilterHelperText";
 
 export default function Optimizer() {
   const {
@@ -182,7 +183,9 @@ export default function Optimizer() {
         updateGobletPreference={updateGobletPreference}
         updateCircletPreference={updateCircletPreference}>
         <div className="align-down-center" style={{ width: "100%" }}>
-          <span>Optimize Filter</span>
+          <span className="align-horizontal-center" style={{ gap: "0.5rem" }}>
+            Optimize Filter <FilterHelperText />
+          </span>
           <OptimizerFilterSlider
             style={{ width: "min(95%,600px)" }}
             value={optimizeFilter}
