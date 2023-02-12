@@ -25,7 +25,7 @@ export const CHARACTER_STAT_TEMPLATE = {
 };
 
 export const TALENT_SCALING_TEMPLATE = [
-  { talent_stat: "total_attack", talent_percent: 1141 },
+  { talent_stat: "total_attack", talent_percent: 1141, talent_stat_offset: 0 },
 ];
 
 export const BONUS_GAIN_TEMPLATE = [

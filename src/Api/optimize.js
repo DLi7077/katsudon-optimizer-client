@@ -1,5 +1,5 @@
-// const API_URL = "http://localhost:5000/api";
-const API_URL = "https://katsudon-optimizer-server.herokuapp.com/api";
+const API_URL = "http://localhost:5000/api";
+// const API_URL = "https://katsudon-optimizer-server.herokuapp.com/api";
 
 
 export async function createRequest(optimizeStats) {

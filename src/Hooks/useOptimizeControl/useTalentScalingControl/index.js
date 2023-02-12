@@ -27,7 +27,7 @@ export default function useTalentScalingControl() {
 
     setTalentScalings(updatedScalings);
   }
-  function updateTalentScaling(index, stat, percent) {
+  function updateTalentScaling(index, stat, percent, offset) {
     if (index < 0 || index >= talentScalings.length) {
       console.error("index", index, "out of bounds");
       return;
@@ -36,6 +36,7 @@ export default function useTalentScalingControl() {
     updatedScalings[index] = {
       talent_stat: stat,
       talent_percent: percent,
+      talent_stat_offset: offset
     };
 
     setTalentScalings(updatedScalings);

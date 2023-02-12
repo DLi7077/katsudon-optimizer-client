@@ -20,7 +20,8 @@ export default function TalentScalings(props) {
       }>
       <div className="align-down-center">
         {map(props.talentScalings, (talentScaling, index) => {
-          const { talent_stat, talent_percent } = talentScaling;
+          const { talent_stat, talent_percent, talent_stat_offset } =
+            talentScaling;
           return (
             <Fragment key={`talent-scaling-${index}`}>
               <div
@@ -36,22 +37,40 @@ export default function TalentScalings(props) {
                       props.updateTalentScaling(
                         index,
                         updatedStat,
-                        talent_percent
+                        talent_percent,
+                        talent_stat_offset
                       );
                     }}
                   />
                 </FormRow>
-                <FormRow key={`talent-scaling-${index}`}>
+                <FormRow>
+                  <span>Scaling Stat Offset</span>
+                  <NumberInput
+                    value={talent_stat_offset}
+                    style={{ width: "41%" }}
+                    onChange={(e) => {
+                      const updatedOffset = parseFloat(e.target.value);
+                      props.updateTalentScaling(
+                        index,
+                        talent_stat,
+                        talent_percent,
+                        isNaN(updatedOffset) ? 0 : updatedOffset
+                      );
+                    }}
+                  />
+                </FormRow>
+                <FormRow>
                   <span>Scaling Percent%</span>
                   <NumberInput
                     value={talent_percent}
                     style={{ width: "41%" }}
                     onChange={(e) => {
-                      const updatedValue = parseFloat(e.target.value);
+                      const updatedPercent = parseFloat(e.target.value);
                       props.updateTalentScaling(
                         index,
                         talent_stat,
-                        isNaN(updatedValue) ? 0 : updatedValue
+                        isNaN(updatedPercent) ? 0 : updatedPercent,
+                        talent_stat_offset
                       );
                     }}
                   />
